@@ -7,7 +7,7 @@ class CreateRaces < ActiveRecord::Migration[8.0]
       t.boolean :homologated, null: false, default: false
       t.timestamps
 
-      t.index :name, unique: true
+      t.index [ :name, :distance, :location ], unique: true
     end
   end
 end

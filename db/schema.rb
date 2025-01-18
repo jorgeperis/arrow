@@ -10,18 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_13_193349) do
-  create_table "race_records", force: :cascade do |t|
-    t.integer "race_id", null: false
-    t.integer "edition"
-    t.date "date", null: false
-    t.integer "custom_distance"
-    t.integer "time", null: false
-    t.boolean "custom_homologated"
+ActiveRecord::Schema[8.0].define(version: 2025_01_18_190018) do
+  create_table "montly_distances", force: :cascade do |t|
+    t.integer "shoes_id", null: false
+    t.date "month", null: false
+    t.integer "distance", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["race_id", "edition"], name: "index_race_records_on_race_id_and_edition", unique: true
-    t.index ["race_id"], name: "index_race_records_on_race_id"
+    t.index ["shoes_id", "month"], name: "index_montly_distances_on_shoes_id_and_month", unique: true
+    t.index ["shoes_id"], name: "index_montly_distances_on_shoes_id"
   end
 
   create_table "races", force: :cascade do |t|
@@ -31,8 +28,35 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_13_193349) do
     t.boolean "homologated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_races_on_name", unique: true
+    t.index ["name", "distance", "location"], name: "index_races_on_name_and_distance_and_location", unique: true
   end
 
-  add_foreign_key "race_records", "races"
+  create_table "rans", force: :cascade do |t|
+    t.integer "race_id", null: false
+    t.integer "edition"
+    t.date "date", null: false
+    t.integer "distance", null: false
+    t.boolean "homologated", default: false, null: false
+    t.integer "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "source", default: "chip", null: false
+    t.index ["race_id", "edition"], name: "index_rans_on_race_id_and_edition", unique: true
+    t.index ["race_id"], name: "index_rans_on_race_id"
+  end
+
+  create_table "shoes", force: :cascade do |t|
+    t.string "brand", null: false
+    t.string "model", null: false
+    t.float "size", null: false
+    t.date "purchased_at", null: false
+    t.integer "distance", default: 0, null: false
+    t.float "price"
+    t.date "retired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "montly_distances", "shoes", column: "shoes_id"
+  add_foreign_key "rans", "races"
 end
