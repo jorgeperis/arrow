@@ -1,0 +1,36 @@
+<% if notice.present? %>
+  <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
+<% end %>
+
+<% content_for :title, "Races" %>
+
+<div class="flex items-center justify-between mbe-4">
+  <h1 class="font-bold text-4xl">Races</h1>
+  <%= link_to "New race", new_race_path, class: "btn btn--primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Distance</th>
+      <th>Location</th>
+      <th>Homologated</th>
+      <th>Rans</th>
+      <th>Acions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @races.each do |race| %>
+      <div class="flex flex-col items-start gap">
+        <tr>
+          <th><%= race.name %></th>
+          <td><%= race.distance %></td>
+          <td><%= race.location %></td>
+          <td><%= race.homologated %></td>
+          <td><%= race.rans.count %></td>
+          <td><%= link_to "Show this race", race, class: "btn" %></td>
+        </tr>
+      </div>
+    <% end %>
+</table>

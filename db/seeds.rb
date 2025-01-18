@@ -122,6 +122,12 @@ marta.rans.create!(
   time: 1_641
 )
 
+ciutat.rans.create!(
+  edition: 9,
+  date: Date.new(2024, 9, 8),
+  time: 1_492
+)
+
 marcelino.rans.create!(
   edition: 46,
   date: Date.new(2024, 9, 22),
