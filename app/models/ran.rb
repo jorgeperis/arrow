@@ -1,4 +1,11 @@
 class Ran < ApplicationRecord
+  COMMON_DISTANCES = {
+    "5000" => "5k",
+    "10000" => "10k",
+    "21097" => "21k",
+    "42195" => "42k"
+  }
+
   belongs_to :race
 
   validates :edition, presence: true, uniqueness: { scope: :race_id }
@@ -9,6 +16,32 @@ class Ran < ApplicationRecord
   validates :source, presence: true
 
   before_validation :set_defaults_from_race, on: :create
+
+  scope :ordered, -> { order(date: :desc) }
+
+  def full_name
+    edition.to_s + "ª " + race.name
+  end
+
+  def time_in_minutes
+    minutes = time / 60
+    seconds = time % 60
+
+    "#{minutes.to_i}'#{seconds.to_i.to_s.rjust(2, '0')}''"
+  end
+
+  def pace
+    seconds_per_km = (1000 * time) / distance
+
+    minutes = seconds_per_km / 60
+    seconds = seconds_per_km % 60
+
+    "#{minutes.to_i}'#{seconds.to_i.to_s.rjust(2, '0')}''"
+  end
+
+  def decorated_distance
+    COMMON_DISTANCES[distance.to_s] || "#{distance / 1000.0} km"
+  end
 
   private
 

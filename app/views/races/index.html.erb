@@ -17,7 +17,7 @@
       <th>Location</th>
       <th>Homologated</th>
       <th>Rans</th>
-      <th>Acions</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -27,7 +27,7 @@
           <th><%= race.name %></th>
           <td><%= race.distance %></td>
           <td><%= race.location %></td>
-          <td><%= race.homologated %></td>
+          <td><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
           <td><%= race.rans.count %></td>
           <td><%= link_to "Show this race", race, class: "btn" %></td>
         </tr>

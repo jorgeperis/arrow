@@ -99,8 +99,15 @@ diez_k.rans.create!(
 
 galapagos.rans.create!(
   edition: 25,
-  date: Date.new(2023, 1, 28),
+  date: Date.new(2024, 1, 28),
   time: 1_525,
+  source: "Apple watch SE 2"
+)
+
+galapagos.rans.create!(
+  edition: 26,
+  date: Date.new(2025, 1, 19),
+  time: 1_394,
   source: "Apple watch SE 2"
 )
 
