@@ -2,10 +2,38 @@
   <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
 <% end %>
 
+<h1 class="font-bold text-3xl mbe-4"><%= @race.name %></h1>
+
 <%= render @race %>
 
-<div class="flex flex-wrap items-center gap mbs-6" style="--row-gap: .5rem">
+<div class="flex flex-wrap items-center gap" style="--row-gap: .5rem">
   <%= link_to "Edit this race", edit_race_path(@race), class: "btn" %>
   <%= link_to "Back to races", races_path, class: "btn" %>
   <%= button_to "Destroy this race", @race, method: :delete, class: "btn" %>
 </div>
+
+<p class="font-bold text-2xl mbs-6">Rans</h1>
+
+<table class="table mbs-4">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Distance</th>
+      <th>Time</th>
+      <th>Pace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @race.rans.ordered.each do |ran| %>
+      <div class="flex flex-col items-start gap">
+        <tr>
+          <th><%= link_to ran.full_name, ran %></th>
+          <td><%= ran.date %></td>
+          <td><%= decorated_distance_for(ran.distance) %></td>
+          <td><%= ran.time_in_minutes %></td>
+          <td><%= ran.pace %></td>
+        </tr>
+      </div>
+    <% end %>
+</table>

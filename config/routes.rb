@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root "rans#index"
+
+  resources :shoes
   resources :rans
   resources :races
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

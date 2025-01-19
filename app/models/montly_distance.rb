@@ -4,4 +4,10 @@ class MontlyDistance < ApplicationRecord
   validates :distance, presence: true
 
   after_commit -> { shoes.update_distance! }
+
+  scope :ordered, -> { order(month: :desc) }
+
+  def distance_in_km
+    (distance / 1000.0).to_s + " km"
+  end
 end

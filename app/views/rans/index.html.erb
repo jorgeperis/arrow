@@ -17,19 +17,17 @@
       <th>Distance</th>
       <th>Time</th>
       <th>Pace</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @rans.each do |ran| %>
       <div class="flex flex-col items-start gap">
         <tr>
-          <th><%= ran.full_name %></th>
+          <th><%= link_to ran.full_name, ran %></th>
           <td><%= ran.date %></td>
-          <td><%= ran.decorated_distance %></td>
+          <td><%= decorated_distance_for(ran.distance) %></td>
           <td><%= ran.time_in_minutes %></td>
           <td><%= ran.pace %></td>
-          <td><%= link_to "Show this ran", ran, class: "btn" %></td>
         </tr>
       </div>
     <% end %>

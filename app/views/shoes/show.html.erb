@@ -1,0 +1,33 @@
+<% if notice.present? %>
+  <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
+<% end %>
+
+<h1 class="font-bold text-3xl mbe-4"><%= @shoes.full_name %></h1>
+
+<%= render @shoes %>
+
+<div class="flex flex-wrap items-center gap mbs-6" style="--row-gap: .5rem">
+  <%= link_to "Edit this shoes", edit_shoes_path(@shoes), class: "btn" %>
+  <%= link_to "Back to shoes", shoes_index_path, class: "btn" %>
+  <%= button_to "Destroy this shoes", @shoes, method: :delete, class: "btn" %>
+</div>
+
+<p class="font-bold text-2xl mbs-6">Monthly distance</h1>
+
+<table class="table mbs-4">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shoes.montly_distances.ordered.each do |montly_distance| %>
+      <div class="flex flex-col items-start gap">
+        <tr>
+          <th><%= montly_distance.month.strftime("%B %Y") %></th>
+          <td><%= montly_distance.distance_in_km %></td>
+        </tr>
+      </div>
+    <% end %>
+</table>
