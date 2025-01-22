@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_18_190018) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_22_080023) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_190018) do
     t.boolean "homologated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rans_count", default: 0, null: false
     t.index ["name", "distance", "location"], name: "index_races_on_name_and_distance_and_location", unique: true
   end
 
@@ -57,6 +58,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_190018) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "montly_distances", "shoes", column: "shoes_id"
+  add_foreign_key "montly_distances", "shoes"
   add_foreign_key "rans", "races"
 end

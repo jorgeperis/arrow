@@ -8,8 +8,7 @@ class Shoes < ApplicationRecord
   validates :distance, presence: true, numericality: { greater_or_equal_than: 0 }
 
   def update_distance!
-    self.distance = montly_distances.sum(:distance)
-    save!
+    update_column(:distance, montly_distances.sum(:distance))
   end
 
   def distance_in_km

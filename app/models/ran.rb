@@ -1,5 +1,5 @@
 class Ran < ApplicationRecord
-  belongs_to :race
+  belongs_to :race, counter_cache: true
 
   validates :edition, presence: true, uniqueness: { scope: :race_id }
   validates :date, presence: true
