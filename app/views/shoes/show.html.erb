@@ -12,9 +12,12 @@
   <%= button_to "Destroy this shoes", @shoes, method: :delete, class: "btn" %>
 </div>
 
-<p class="font-bold text-2xl mbs-6">Monthly distance</h1>
+<div class="flex items-center justify-between mbe-4 mbs-4">
+  <h1 class="font-bold text-4xl">Montly distances</h1>
+  <%= link_to "New montly distance", new_shoes_montly_distance_path(@shoes), class: "btn btn--primary" %>
+</div>
 
-<table class="table mbs-4">
+<table class="table">
   <thead>
     <tr>
       <th>Date</th>
@@ -25,7 +28,7 @@
     <% @shoes.montly_distances.ordered.each do |montly_distance| %>
       <div class="flex flex-col items-start gap">
         <tr>
-          <th><%= montly_distance.month.strftime("%B %Y") %></th>
+          <th><%= link_to montly_distance.month.strftime("%B %Y"), montly_distance %></th>
           <td><%= montly_distance.distance_in_km %></td>
         </tr>
       </div>

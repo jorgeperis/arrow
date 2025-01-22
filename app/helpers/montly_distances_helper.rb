@@ -1,0 +1,2 @@
+module MontlyDistancesHelper
+end
