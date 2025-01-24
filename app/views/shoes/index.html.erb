@@ -12,8 +12,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Brand</th>
-      <th>Model</th>
+      <th>Shoes</th>
+      <th>Purchased at</th>
       <th>Age</th>
       <th>Distance</th>
       <th>State</th>
@@ -23,9 +23,9 @@
     <% @shoes.each do |shoes| %>
       <div class="flex flex-col items-start gap">
         <tr>
-          <th><%= link_to shoes.brand, shoes %></th>
-          <td><%= shoes.model %></td>
-          <td><%= distance_of_time_in_words_to_now(shoes.purchased_at) %></td>
+          <th><%= link_to shoes.full_name, shoes %></th>
+          <td><%= shoes.purchased_at %></td>
+          <td><%= distance_of_time_in_words(shoes.purchased_at, shoes.retired_at || Date.today) %></td>
           <td><%= shoes.distance_in_km %></td>
           <td><div class="badge <%= shoes.active? ? "badge--positive" : "badge--negative" %>"><%= shoes.active? ? "ACTIVE" : "RETIRED" %></div></td>
         </tr>

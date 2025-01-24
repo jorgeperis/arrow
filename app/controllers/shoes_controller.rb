@@ -3,7 +3,7 @@ class ShoesController < ApplicationController
 
   # GET /shoes or /shoes.json
   def index
-    @shoes = Shoes.all
+    @shoes = Shoes.ordered
   end
 
   # GET /shoes/1 or /shoes/1.json
@@ -65,6 +65,6 @@ class ShoesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shoes_params
-      params.expect(shoes: [ :brand, :model, :size, :purchased_at, :distance, :price, :retired_at ])
+      params.expect(shoes: [ :brand, :model, :size, :purchased_at, :price, :retired_at ])
     end
 end
