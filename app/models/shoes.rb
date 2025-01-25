@@ -13,10 +13,6 @@ class Shoes < ApplicationRecord
     update_column(:distance, montly_distances.sum(:distance))
   end
 
-  def distance_in_km
-    (distance / 1000.0).to_s + " km"
-  end
-
   def active?
     retired_at.nil?
   end

@@ -12,6 +12,10 @@ module ApplicationHelper
   }
 
   def decorated_distance_for(distance)
-    COMMON_DISTANCES[distance.to_s] || "#{distance} km"
+    COMMON_DISTANCES[distance.to_s] || distance_in_km(distance)
+  end
+
+  def distance_in_km(distance)
+    distance.to_s + " km"
   end
 end
