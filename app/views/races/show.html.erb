@@ -12,7 +12,7 @@
   <%= button_to "Destroy this race", @race, method: :delete, class: "btn" %>
 </div>
 
-<p class="font-bold text-2xl mbs-6">Rans</h1>
+<p class="font-bold text-2xl mbs-6">Run marks</h1>
 
 <table class="table mbs-4">
   <thead>
@@ -25,14 +25,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @race.rans.ordered.each do |ran| %>
+    <% @race.run_marks.ordered.each do |run_mark| %>
       <div class="flex flex-col items-start gap">
         <tr>
-          <th><%= link_to ran.full_name, ran %></th>
-          <td><%= ran.date %></td>
-          <td><%= decorated_distance_for(ran.distance) %></td>
-          <td><%= ran.time_in_minutes %></td>
-          <td><%= ran.pace %></td>
+          <th><%= link_to run_mark.full_name, run_mark %></th>
+          <td><%= run_mark.date %></td>
+          <td><%= decorated_distance_for(run_mark.distance) %></td>
+          <td><%= run_mark.time_in_minutes %></td>
+          <td><%= run_mark.pace %></td>
         </tr>
       </div>
     <% end %>

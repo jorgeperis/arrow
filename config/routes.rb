@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root "rans#index"
+  root "run_marks#index"
 
   resources :shoes do
     resources :montly_distances, except: [ :index ], shallow: true
   end
-  resources :rans
+  resources :run_marks
   resources :races
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

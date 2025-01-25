@@ -1,4 +1,4 @@
-class Ran < ApplicationRecord
+class RunMark < ApplicationRecord
   belongs_to :race, counter_cache: true
 
   validates :edition, presence: true, uniqueness: { scope: :race_id }
@@ -24,7 +24,7 @@ class Ran < ApplicationRecord
   end
 
   def pace
-    seconds_per_km = (1000 * time) / distance
+    seconds_per_km = time / distance
 
     minutes = seconds_per_km / 60
     seconds = seconds_per_km % 60

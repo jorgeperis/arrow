@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_22_080023) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_25_124439) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
-    t.integer "distance", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "distance", default: 0.0, null: false
     t.index ["shoes_id", "month"], name: "index_montly_distances_on_shoes_id_and_month", unique: true
     t.index ["shoes_id"], name: "index_montly_distances_on_shoes_id"
   end
@@ -24,26 +24,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_22_080023) do
   create_table "races", force: :cascade do |t|
     t.string "name", null: false
     t.string "location", null: false
-    t.integer "distance", null: false
     t.boolean "homologated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rans_count", default: 0, null: false
-    t.index ["name", "distance", "location"], name: "index_races_on_name_and_distance_and_location", unique: true
+    t.integer "run_marks_count", default: 0, null: false
+    t.float "distance", default: 0.0, null: false
+    t.index ["name", "location"], name: "index_races_on_name_and_distance_and_location", unique: true
   end
 
-  create_table "rans", force: :cascade do |t|
+  create_table "run_marks", force: :cascade do |t|
     t.integer "race_id", null: false
     t.integer "edition"
     t.date "date", null: false
-    t.integer "distance", null: false
     t.boolean "homologated", default: false, null: false
     t.integer "time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "source", default: "chip", null: false
-    t.index ["race_id", "edition"], name: "index_rans_on_race_id_and_edition", unique: true
-    t.index ["race_id"], name: "index_rans_on_race_id"
+    t.float "distance", default: 0.0, null: false
+    t.index ["race_id", "edition"], name: "index_run_marks_on_race_id_and_edition", unique: true
+    t.index ["race_id"], name: "index_run_marks_on_race_id"
   end
 
   create_table "shoes", force: :cascade do |t|
@@ -51,13 +51,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_22_080023) do
     t.string "model", null: false
     t.float "size", null: false
     t.date "purchased_at", null: false
-    t.integer "distance", default: 0, null: false
     t.float "price"
     t.date "retired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "distance", default: 0.0, null: false
   end
 
   add_foreign_key "montly_distances", "shoes"
-  add_foreign_key "rans", "races"
+  add_foreign_key "run_marks", "races"
 end

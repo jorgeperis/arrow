@@ -15,7 +15,7 @@
       <th>Name</th>
       <th>Distance</th>
       <th>Homologated</th>
-      <th>Rans count</th>
+      <th>Run marks count</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +25,7 @@
           <th><%= link_to race.name, race %></th>
           <td><%= decorated_distance_for(race.distance) %></td>
           <td><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
-          <td><%= race.rans.size %></td>
+          <td><%= race.run_marks.size %></td>
         </tr>
       </div>
     <% end %>

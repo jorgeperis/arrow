@@ -1,5 +1,5 @@
 class Race < ApplicationRecord
-  has_many :rans, dependent: :destroy
+  has_many :run_marks, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { scope: [ :distance, :location ] }
   validates :location, presence: true

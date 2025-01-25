@@ -2,11 +2,11 @@
   <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
 <% end %>
 
-<% content_for :title, "Rans" %>
+<% content_for :title, "Run marks" %>
 
 <div class="flex items-center justify-between mbe-4">
-  <h1 class="font-bold text-4xl">Rans</h1>
-  <%= link_to "New ran", new_ran_path, class: "btn btn--primary" %>
+  <h1 class="font-bold text-4xl">Run marks</h1>
+  <%= link_to "New run mark", new_run_mark_path, class: "btn btn--primary" %>
 </div>
 
 <table class="table">
@@ -20,14 +20,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @rans.each do |ran| %>
+    <% @run_marks.each do |run_mark| %>
       <div class="flex flex-col items-start gap">
         <tr>
-          <th><%= link_to ran.full_name, ran %></th>
-          <td><%= ran.date %></td>
-          <td><%= decorated_distance_for(ran.distance) %></td>
-          <td><%= ran.time_in_minutes %></td>
-          <td><%= ran.pace %></td>
+          <th><%= link_to run_mark.full_name, run_mark %></th>
+          <td><%= run_mark.date %></td>
+          <td><%= decorated_distance_for(run_mark.distance) %></td>
+          <td><%= run_mark.time_in_minutes %></td>
+          <td><%= run_mark.pace %></td>
         </tr>
       </div>
     <% end %>
