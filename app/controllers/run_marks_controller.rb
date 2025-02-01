@@ -12,7 +12,7 @@ class RunMarksController < ApplicationController
 
   # GET /run_marks/new
   def new
-    @run_mark = RunMark.new(time: 0)
+    @run_mark = RunMark.new
   end
 
   # GET /run_marks/1/edit

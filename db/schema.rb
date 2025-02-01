@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_124439) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_01_111907) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_124439) do
     t.integer "edition"
     t.date "date", null: false
     t.boolean "homologated", default: false, null: false
-    t.integer "time", null: false
+    t.integer "time", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "source", default: "chip", null: false
