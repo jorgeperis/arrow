@@ -16,20 +16,20 @@ class RunMark < ApplicationRecord
     edition.to_s + "ª " + race.name
   end
 
-  def time_in_minutes
-    minutes = time / 60
-    seconds = time % 60
-
-    "#{minutes.to_i}'#{seconds.to_i.to_s.rjust(2, '0')}''"
+  def pace
+    time / distance
   end
 
-  def pace
-    seconds_per_km = time / distance
+  def time_hours
+    time / 3600
+  end
 
-    minutes = seconds_per_km / 60
-    seconds = seconds_per_km % 60
+  def time_minutes
+    (time % 3600) / 60
+  end
 
-    "#{minutes.to_i}'#{seconds.to_i.to_s.rjust(2, '0')}''"
+  def time_seconds
+    time % 60
   end
 
   private

@@ -13,7 +13,7 @@
 
   <div class="flex flex-col gap-half mbe-4">
     <%= form.label :race_id, class: "text-sm font-medium leading-none" %>
-    <%= form.text_field :race_id, class: "input" %>
+    <%= form.select :race_id, options_for_select(Race.pluck(:name, :id)), {}, class: "input" %>
   </div>
 
   <div class="flex flex-col gap-half mbe-4">
@@ -38,7 +38,11 @@
 
   <div class="flex flex-col gap-half mbe-4">
     <%= form.label :time, class: "text-sm font-medium leading-none" %>
-    <%= form.number_field :time, class: "input" %>
+    <div class="flex gap-half">
+      <%= form.number_field :time_hours, class: "input", placeholder: "Hours", min: 0 %>
+      <%= form.number_field :time_minutes, class: "input", placeholder: "Minutes", min: 0, max: 59 %>
+      <%= form.number_field :time_seconds, class: "input", placeholder: "Seconds", min: 0, max: 59 %>
+    </div>
   </div>
 
   <div class="flex flex-col gap-half mbe-4">

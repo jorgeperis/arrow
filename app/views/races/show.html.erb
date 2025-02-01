@@ -31,8 +31,8 @@
           <th><%= link_to run_mark.full_name, run_mark %></th>
           <td><%= run_mark.date %></td>
           <td><%= decorated_distance_for(run_mark.distance) %></td>
-          <td><%= run_mark.time_in_minutes %></td>
-          <td><%= run_mark.pace %></td>
+          <td><%= decorated_time_for(run_mark.time) %></td>
+          <td><%= decorated_time_for(run_mark.pace) %></td>
         </tr>
       </div>
     <% end %>
