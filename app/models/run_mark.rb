@@ -17,7 +17,7 @@ class RunMark < ApplicationRecord
   end
 
   def pace
-    time / distance
+    (time / distance).round
   end
 
   def time_hours

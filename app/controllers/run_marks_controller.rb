@@ -65,6 +65,12 @@ class RunMarksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def run_mark_params
+      hours = params[:run_mark].delete(:time_hours)
+      minutes = params[:run_mark].delete(:time_minutes)
+      seconds = params[:run_mark].delete(:time_seconds)
+
+      params[:run_mark][:time] = hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
+
       params.expect(run_mark: [ :race_id, :edition, :date, :distance, :homologated, :time, :source ])
     end
 end
