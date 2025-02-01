@@ -65,6 +65,10 @@ class MontlyDistancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def montly_distance_params
+      if params.dig(:montly_distance, :month).present?
+        params[:montly_distance][:month] = DateTime.strptime(params[:montly_distance][:month], "%Y-%m")
+      end
+
       params.expect(montly_distance: [ :month, :distance ])
     end
 end
