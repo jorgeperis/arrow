@@ -29,4 +29,8 @@
     </table>
 <% end %>
 
+<div class="relative i-full" style="block-size: 600px;">
+  <%= tag.canvas aria: { label: "Paces" }, role: "img", data: { controller: "chart", chart_type_value: "line", chart_data_value: @chart_data.to_json } %>
+</div>
+
 
