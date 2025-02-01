@@ -1,0 +1,32 @@
+<% content_for :title, "Stats" %>
+
+<div class="flex items-center justify-between mbe-4">
+  <h1 class="font-bold text-4xl">Stats</h1>
+</div>
+
+<% @stats.each do |distance, run_marks| %>
+    <div class="flex items-center justify-between mbe-4">
+    <h2 class="font-bold text-2xl">Top <%= decorated_distance_for(distance)%></h2>
+    </div>
+    <table class="table mbe-8">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Pace</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% run_marks.first(3).each do |run_mark| %>
+        <div class="flex flex-col items-start gap">
+            <tr>
+            <th><%= link_to run_mark.full_name, run_mark %></th>
+            <td><%= run_mark.date %></td>
+            <td><%= decorated_time_for(run_mark.pace) %></td>
+            </tr>
+        </div>
+        <% end %>
+    </table>
+<% end %>
+
+

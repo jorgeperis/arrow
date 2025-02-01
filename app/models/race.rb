@@ -6,5 +6,7 @@ class Race < ApplicationRecord
   validates :distance, presence: true, numericality: { greater_than: 0 }
   validates :homologated, inclusion: { in: [ true, false ] }
 
-  scope :ordered_by_distance, -> { order(distance: :asc) }
+  def best_run_mark
+    @best_run_mark ||= run_marks.order(time: :asc).first
+  end
 end

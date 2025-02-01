@@ -15,7 +15,7 @@
       <th>Name</th>
       <th>Distance</th>
       <th>Homologated</th>
-      <th>Run marks count</th>
+      <th>Best mark</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +25,7 @@
           <th><%= link_to race.name, race %></th>
           <td><%= decorated_distance_for(race.distance) %></td>
           <td><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
-          <td><%= race.run_marks.size %></td>
+          <td><%= race.best_run_mark ? link_to(decorated_time_for(race.best_run_mark.time), race.best_run_mark) : "-" %></td>
         </tr>
       </div>
     <% end %>

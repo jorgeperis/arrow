@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root "run_marks#index"
+  root "stats#index"
 
+  resources :stats, only: [ :index ]
   resources :shoes do
     resources :montly_distances, except: [ :index ], shallow: true
   end
