@@ -13,7 +13,7 @@
 
   <div class="flex flex-col gap-half mbe-4">
     <%= form.label :race_id, class: "text-sm font-medium leading-none" %>
-    <%= form.select :race_id, options_for_select(Race.pluck(:name, :id), form.object.race_id), { include_blank: true }, class: "input" %>
+    <%= form.select :race_id, grouped_options_for_select(races_grouped_options, form.object.race_id), { include_blank: "Select race..." }, data: { controller: "combobox" } %>
   </div>
 
   <div class="flex flex-col gap-half mbe-4">
@@ -28,7 +28,7 @@
 
   <div class="flex flex-col gap-half mbe-4">
     <%= form.label :distance, class: "text-sm font-medium leading-none" %>
-    <%= form.number_field :distance, class: "input", step: "0.001" %>
+    <%= form.number_field :distance, class: "input", step: "0.001", inputmode: :decimal %>
   </div>
 
   <div class="flex flex-col gap-half mbe-4">
