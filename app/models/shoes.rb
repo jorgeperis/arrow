@@ -1,4 +1,6 @@
 class Shoes < ApplicationRecord
+  MAX_KM_TO_RETIRE = 1000.freeze
+
   has_many :montly_distances, dependent: :destroy
 
   validates :brand, presence: true
@@ -20,5 +22,13 @@ class Shoes < ApplicationRecord
 
   def full_name
     brand + " " + model
+  end
+
+  def estimated_retired_at
+    return Date.today if distance >= MAX_KM_TO_RETIRE
+
+    montly_distances = MontlyDistance.where(month: 7.months.ago..)
+    average_distance_per_day = (montly_distances.sum(:distance) / 6.0) / (365.0 / 12)
+    Date.today + ((MAX_KM_TO_RETIRE - distance) / average_distance_per_day).round.days
   end
 end

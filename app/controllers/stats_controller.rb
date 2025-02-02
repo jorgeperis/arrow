@@ -6,10 +6,11 @@ class StatsController < ApplicationController
       labels: chart_months,
       datasets: pace_per_distance_for_all_months.each_with_index.map do |(distance, data), index|
         {
-            label: helpers.decorated_distance_for(distance),
-            borderColor: CHART_COLORS[index][:dark],
-            backgroundColor: CHART_COLORS[index][:light],
-            data: data.values
+          label: helpers.decorated_distance_for(distance),
+          borderColor: CHART_COLORS[index][:dark],
+          backgroundColor: CHART_COLORS[index][:light],
+          data: data.values,
+          spanGaps: true
         }
       end
     }
@@ -66,27 +67,10 @@ class StatsController < ApplicationController
   def fill_missing_months(months, data)
     filled_data = {}
     months.each_with_index do |month, index|
-      if data.key?(month)
-        filled_data[month] = data[month]
-      else
-        prev_month, next_month = find_surrounding_months(months, data.keys, index)
-
-        filled_data[month] = if prev_month && next_month
-          interpolate(data[prev_month], data[next_month], months.index(prev_month), months.index(next_month), index).round
-        end
+      filled_data[month] = if data.key?(month)
+        data[month]
       end
     end
     filled_data
-  end
-
-  def find_surrounding_months(months, data_months, index)
-    prev_month = data_months.select { |m| months.index(m) < index }.max_by { |m| months.index(m) }
-    next_month = data_months.select { |m| months.index(m) > index }.min_by { |m| months.index(m) }
-    [ prev_month, next_month ]
-  end
-
-  def interpolate(prev_value, next_value, prev_index, next_index, current_index)
-    slope = (next_value - prev_value).to_f / (next_index - prev_index)
-    prev_value + slope * (current_index - prev_index)
   end
 end

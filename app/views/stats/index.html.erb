@@ -4,7 +4,7 @@
   <h1 class="font-bold text-4xl">Stats</h1>
 </div>
 
-<div class="flex-column items-center">
+<div class="flex-column items-center mbe-8">
   <h2 class="font-bold text-2xl">Estimations</h2>
   <h2 class="font-bold text-1xl">Time and pace</h2>
   <ul>
@@ -22,25 +22,19 @@
   <h2 class="font-bold text-1xl">Retirement of active shoes</h2>
   <ul>
     <% Shoes.active.each do |shoes| %>
-      <% montly_distances = MontlyDistance.where(month: 6.months.ago..) %>
-      <% average_distance_per_day = (montly_distances.sum(:distance) / montly_distances.size) / 30.0 %>
-      <% remaining_days = ((MAX_KM_FOR_SHOES - shoes.distance) / average_distance_per_day).round %>
-
-      <li><%= shoes.full_name %> will retire on <%= Date.today + remaining_days.days %></li>
+      <li><%= shoes.full_name %> will retire on <%= shoes.estimated_retired_at %></li>
     <% end %>
 </div>
 
-<% @stats.each do |distance, run_marks| %>
-    <div class="flex items-center justify-between mbe-4">
-      <h2 class="font-bold text-2xl">Top <%= decorated_distance_for(distance)%></h2>
-    </div>
-    <table class="table mbe-8">
+<div class="flex items-center justify-between mbe-4">
+  <h2 class="font-bold text-2xl">Podiums</h2>
+</div>
+<% @stats.each do |distance, run_marks| %> 
+    <table class="table mbe-4">
     <thead>
-        <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Pace</th>
-        </tr>
+      <div class="flex items-center gap">
+        <div class="font-semibold"><%= decorated_distance_for(distance) %></div>
+      </div>  
     </thead>
     <tbody>
         <% run_marks.first(3).each do |run_mark| %>
