@@ -4,9 +4,25 @@
   <h1 class="font-bold text-4xl">Stats</h1>
 </div>
 
+<div class="flex-column items-center">
+  <h2 class="font-bold text-2xl">Estimated time | pace</h2>
+  <ul>
+    <% last_5k_time = RunMark.order(time: :asc).where(distance: 5.0).first.time %>
+    <% last_5k_pace = RunMark.order(time: :asc).where(distance: 5.0).first.pace %>
+    <% time_for_10k = (last_5k_time * 2.07).round %>
+    <% time_for_21k = (time_for_10k * 2.2).round %>
+    <% time_for_42k = (time_for_21k * 2.1).round %>
+
+    <li>5K: <%= decorated_time_for(last_5k_time) %> | <%= decorated_time_for(last_5k_pace) %></li>
+    <li>10K: <%= decorated_time_for(time_for_10k) %> | <%= decorated_time_for((time_for_10k / 10.0).round) %></li>
+    <li>21K: <%= decorated_time_for(time_for_21k) %> | <%= decorated_time_for((time_for_21k / 21.097).round) %></li>
+    <li>42K: <%= decorated_time_for(time_for_42k) %> | <%= decorated_time_for((time_for_42k / 42.195).round) %></li>
+  </ul>
+</div>
+
 <% @stats.each do |distance, run_marks| %>
     <div class="flex items-center justify-between mbe-4">
-    <h2 class="font-bold text-2xl">Top <%= decorated_distance_for(distance)%></h2>
+      <h2 class="font-bold text-2xl">Top <%= decorated_distance_for(distance)%></h2>
     </div>
     <table class="table mbe-8">
     <thead>
