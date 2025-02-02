@@ -24,16 +24,28 @@
 
   <body class="header-layout">
     <header id="header">
-      <div class="container flex items-center">
-        <h1 class="text-3xl font-semibold">// Runtally</h1>
-        <nav>
-          <ul class="flex space-x-4 mis-6">
-            <li><%= link_to 'Stats', root_path, class: "text-lg m-2" %></li>
-            <li><%= link_to 'Races', races_path, class: "text-lg m-2" %></li>
-            <li><%= link_to 'Run marks', run_marks_path, class: "text-lg m-2" %></li>
-            <li><%= link_to 'Shoes', shoes_index_path, class: "text-lg m-2" %></li>
-          </ul>
-        </nav>
+      <div class="container flex items-center justify-between">
+        <div class="flex items-center">
+          <h1 class="text-xl font-bold" style="font-family: var(--font-industrial)">// RUNTALLY</h1>
+          <nav>
+            <ul class="flex space-x-4 mis-8">
+              <li><%= link_to 'Stats', root_path, class: "text-lg m-2" %></li>
+              <li><%= link_to 'Races', races_path, class: "text-lg m-2" %></li>
+              <li><%= link_to 'Run marks', run_marks_path, class: "text-lg m-2" %></li>
+              <li><%= link_to 'Shoes', shoes_index_path, class: "text-lg m-2" %></li>
+            </ul>
+          </nav>
+        </div>
+        <div style="font-family: var(--font-industrial)">
+          <div class="flex items-center gap" style="--column-gap: 1rem; block-size: 1.5rem;">
+            <% RunMark.order(distance: :asc, time: :asc).group_by(&:distance).each do |distance, run_marks| %>
+              <div>
+                <span class="font-normal text-sm"><%= "#{decorated_distance_for(distance)}:" %></span>
+                <span class="font-bold text-xl"><%= link_to decorated_time_for(run_marks.first.pace), run_marks.first %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </header>
 

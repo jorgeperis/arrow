@@ -3,12 +3,14 @@ COMMON_RACE_DISTANCES = {
   "1.609" => "1M",
   "5.0" => "5K",
   "10.0" => "10K",
-  "21.097" => "Half marathon",
+  "21.097" => "21K",
   "35.0" => "35K",
-  "42.195" => "Marathon",
+  "42.195" => "42K",
   "50.0" => "50K",
   "100.0" => "100K"
-}
+}.freeze
+
+MAX_KM_FOR_SHOES = 1000.freeze
 
 CHART_COLORS = [
   { light: "#93c5fd", dark: "#3b82f6" },
@@ -19,4 +21,4 @@ CHART_COLORS = [
   { light: "#f87171", dark: "#ef4444" },
   { light: "#34d399", dark: "#059669" },
   { light: "#a78bfa", dark: "#7c3aed" }
-]
+].freeze

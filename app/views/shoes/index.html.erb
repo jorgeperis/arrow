@@ -26,7 +26,7 @@
           <td><%= distance_in_km(shoes.distance) %></td>
           <td>
             <label>
-              <%= tag.progress value: shoes.distance, max: 1000, class: "progress", role: "progressbar" %>
+              <%= tag.progress value: shoes.distance, max: MAX_KM_FOR_SHOES, class: "progress", role: "progressbar" %>
               <span class="sr-only">Loading progress</span>
             </label>
           </td>
