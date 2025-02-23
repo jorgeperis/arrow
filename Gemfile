@@ -61,5 +61,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "css-zero", "~> 1.0.6"
