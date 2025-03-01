@@ -1,6 +1,6 @@
 module ApplicationHelper
   def decorated_distance_for(distance)
-    COMMON_RACE_DISTANCES[distance.to_s] || distance_in_km(distance)
+    COMMON_RACE_DISTANCES[distance.to_s]&.fetch(:name) || distance_in_km(distance)
   end
 
   def distance_in_km(distance)

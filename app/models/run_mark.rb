@@ -11,6 +11,14 @@ class RunMark < ApplicationRecord
   before_validation :set_defaults_from_race, on: :create
 
   scope :ordered, -> { order(date: :desc) }
+  scope :homologated, -> { where(homologated: true) }
+  scope :common_distances, -> { where(distance: COMMON_RACE_DISTANCES.keys) }
+
+  def self.best_homologated_paces
+    common_distances.homologated.order(:distance, :time).group_by(&:distance).each_with_object({}) do |(distance, marks), new_obj|
+      new_obj[distance.to_s] = marks.first.pace
+    end
+  end
 
   def full_name
     edition.to_s + "ª " + race.name

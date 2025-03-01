@@ -5,10 +5,12 @@ class StatsController < ApplicationController
     @chart_data = {
       labels: chart_months,
       datasets: pace_per_distance_for_all_months.each_with_index.map do |(distance, data), index|
+        colors = COMMON_RACE_DISTANCES[distance.to_s][:colors]
+
         {
           label: helpers.decorated_distance_for(distance),
-          borderColor: CHART_COLORS[index][:dark],
-          backgroundColor: CHART_COLORS[index][:light],
+          borderColor: colors[:dark],
+          backgroundColor: colors[:light],
           data: data.values,
           spanGaps: true
         }
