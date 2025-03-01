@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .pb-card-mark {
+    transition: opacity 0.3s ease;
+ }
+
+ .pb-card-mark:hover {
+    opacity: var(--opacity-75);
+ }

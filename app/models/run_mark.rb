@@ -13,12 +13,15 @@ class RunMark < ApplicationRecord
   scope :ordered, -> { order(date: :desc) }
   scope :homologated, -> { where(homologated: true) }
   scope :common_distances, -> { where(distance: COMMON_RACE_DISTANCES.keys) }
+  scope :favourite_distances, -> { where(distance: FAVOURITE_RACE_DISTANCES.keys) }
 
-  def self.best_homologated_paces
-    common_distances.homologated.order(:distance, :time).group_by(&:distance).each_with_object({}) do |(distance, marks), new_obj|
-      new_obj[distance.to_s] = marks.first.pace
-    end
-  end
+  scope :with_min_time_per_distance, -> {
+    order(:distance, :time).where("time = (SELECT MIN(time) FROM run_marks AS rm WHERE rm.distance = run_marks.distance)")
+  }
+
+  scope :best_homologated_common_distances, -> {
+    common_distances.homologated.with_min_time_per_distance
+  }
 
   def full_name
     edition.to_s + "ª " + race.name
