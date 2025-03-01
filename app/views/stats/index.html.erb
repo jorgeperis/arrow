@@ -4,26 +4,61 @@
   <h1 class="font-bold text-4xl">Stats</h1>
 </div>
 
-<div class="flex-column items-center mbe-8">
-  <h2 class="font-bold text-2xl">Estimations</h2>
-  <h2 class="font-bold text-1xl">Time and pace</h2>
-  <ul>
-    <% last_5k_time = RunMark.order(time: :asc).where(distance: 5.0).first.time %>
-    <% last_5k_pace = RunMark.order(time: :asc).where(distance: 5.0).first.pace %>
-    <% time_for_10k = (last_5k_time * 2.07).round %>
-    <% time_for_21k = (time_for_10k * 2.2).round %>
-    <% time_for_42k = (time_for_21k * 2.1).round %>
+<div class="flex flex-wrap gap mb-4">
+  <div class="card">
+    <div class="flex flex-col">
+      <h3 class="font-semibold leading-none mbe-1">Estimations</h3>
+      <p class="text-sm text-subtle">Estimated pace for next races</p>
+    </div>
+    <div class="flex flex-col gap mb-2">
+      <div class="prose">
+      <ul>
+          <% last_5k_time = RunMark.order(time: :asc).where(distance: 5.0).first.time %>
+          <% last_5k_pace = RunMark.order(time: :asc).where(distance: 5.0).first.pace %>
+          <% time_for_10k = (last_5k_time * 2.07).round %>
+          <% time_for_21k = (time_for_10k * 2.2).round %>
+          <% time_for_42k = (time_for_21k * 2.1).round %>
 
-    <li>5K: <%= decorated_time_for(last_5k_time) %> | <%= decorated_time_for(last_5k_pace) %></li>
-    <li>10K: <%= decorated_time_for(time_for_10k) %> | <%= decorated_time_for((time_for_10k / 10.0).round) %></li>
-    <li>21K: <%= decorated_time_for(time_for_21k) %> | <%= decorated_time_for((time_for_21k / 21.097).round) %></li>
-    <li>42K: <%= decorated_time_for(time_for_42k) %> | <%= decorated_time_for((time_for_42k / 42.195).round) %></li>
-  </ul>
-  <h2 class="font-bold text-1xl">Retirement of active shoes</h2>
-  <ul>
-    <% Shoes.active.each do |shoes| %>
-      <li><%= shoes.full_name %> will retire on <%= shoes.estimated_retired_at %></li>
-    <% end %>
+          <li>5K: <%= decorated_time_for(last_5k_pace) %></li>
+          <li>10K: <%= decorated_time_for((time_for_10k / 10.0).round) %></li>
+          <li>21K: <%= decorated_time_for((time_for_21k / 21.097).round) %></li>
+          <li>42K: <%= decorated_time_for((time_for_42k / 42.195).round) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="flex flex-col">
+      <h3 class="font-semibold leading-none mbe-1">Shoes</h3>
+      <p class="text-sm text-subtle">Estimated date of retirement</p>
+    </div>
+    <div class="flex flex-col gap mb-2">
+      <div class="prose">
+        <ul>
+          <% Shoes.active.each do |shoes| %>
+            <li><%= shoes.full_name %>: <%= shoes.estimated_retired_at %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="flex flex-col">
+      <h3 class="font-semibold leading-none mbe-1">PB</h3>
+      <p class="text-sm text-subtle">My personal bests paces</p>
+    </div>
+    <div class="flex flex-col gap mb-2">
+      <div class="prose">
+        <ul>
+          <li>5K: 4'35''' </li>
+          <li>10K: 4'49''</li>
+          <li>21K: 5'18''</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="flex items-center justify-between mbe-4">
@@ -49,8 +84,7 @@
     </table>
 <% end %>
 
-<div class="relative i-full" style="block-size: 600px;">
-  <%= tag.canvas aria: { label: "Paces" }, role: "img", data: { controller: "chart", chart_type_value: "line", chart_data_value: @chart_data.to_json } %>
-</div>
-
+<div class="relative i-full">
+        <%= tag.canvas aria: { label: "Paces" }, role: "img", data: { controller: "chart", chart_type_value: "line", chart_data_value: @chart_data.to_json } %>
+      </div>
 
