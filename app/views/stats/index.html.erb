@@ -6,53 +6,6 @@
 
 <div class="flex flex-wrap mb-4">
   <div class="card m-3">
-    <div class="flex flex-col">
-      <h3 class="font-semibold leading-none mbe-1">Estimations</h3>
-      <p class="text-sm text-subtle">Estimated pace for next races</p>
-    </div>
-    <div class="flex flex-col gap mb-2">
-      <div class="prose">
-      <ul>
-          <% last_5k_time = RunMark.order(time: :asc).where(distance: 5.0).first.time %>
-          <% last_5k_pace = RunMark.order(time: :asc).where(distance: 5.0).first.pace %>
-          <% time_for_10k = (last_5k_time * 2.07).round %>
-          <% time_for_21k = (time_for_10k * 2.2).round %>
-          <% time_for_42k = (time_for_21k * 2.1).round %>
-
-          <li>5K: <%= decorated_time_for(last_5k_pace) %></li>
-          <li>10K: <%= decorated_time_for((time_for_10k / 10.0).round) %></li>
-          <li>21K: <%= decorated_time_for((time_for_21k / 21.097).round) %></li>
-          <li>42K: <%= decorated_time_for((time_for_42k / 42.195).round) %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="card m-3">
-    <div class="flex flex-col">
-      <h3 class="font-semibold leading-none mbe-1">Shoes</h3>
-      <p class="text-sm text-subtle">Estimated date of retirement</p>
-    </div>
-    <div class="flex flex-col gap mb-2">
-      <div class="prose">
-        <ul>
-          <% Shoes.active.each do |shoes| %>
-            <%= link_to shoes do %>
-              <div class="flex flex-col pb-card-mark items-center justify-between border rounded-md pi-3 pb-1 bg-shade shadow-xs gap-half">
-                <div class="flex items-center justify-start gap">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-footprints"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg>
-                  <span class="text-xs uppercase"><%= shoes.full_name  %></span>
-                </div>
-                <span class="text-xl font-semibold"><%= shoes.estimated_retired_at %></span>
-              </div>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="card m-3">
     <h3 class="flex font-semibold leading-none mbe-1">Personal bests</h3>
     <p class="text-sm text-subtle mbe-3">Best paces on homologated races</p>
     <div class="flex flex-col gap-half">
@@ -70,6 +23,63 @@
               <span class="text-xs"><%= decorated_distance_for(run_mark.distance) %></span>
             </div>
             <span class="text-xl font-semibold"><%= decorated_time_for(run_mark.pace) %></span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card m-3">
+    <% factors = {
+      "5.0" => "-",
+      "10.0" => "5K time * 2.07",
+      "21.097" => "10K time * 2.2",
+      "42.195" => "21K time * 2.1"
+    }%>
+
+    <% last_5k = RunMark.order(time: :asc).where(distance: 5.0).first %>
+    <% time_for_10k = (last_5k.time * 2.07).round %>
+    <% time_for_21k = (time_for_10k * 2.2).round %>
+    <% time_for_42k = (time_for_21k * 2.1).round %>
+
+    <% paces = {
+      "5.0" => last_5k.pace,
+      "10.0" => (time_for_10k / 10.0).round,
+      "21.097" => (time_for_21k / 21.097).round,
+      "42.195" => (time_for_42k / 42.195).round
+    } %>
+
+    <h3 class="flex font-semibold leading-none mbe-1">Estimated pace</h3>
+    <p class="text-sm text-subtle mbe-3">Based on last homologated 5K run mark (<%= last_5k.date %>)</p>
+    <div class="flex flex-col gap-half">
+      <% FAVOURITE_RACE_DISTANCES.each do |distance, distance_data| %>
+        <div class="pb-card-mark flex items-center justify-between border rounded-md pi-3 pb-1 bg-shade shadow-xs">
+          <div class="flex flex-col items-center" style="color: <%= distance_data[:colors][:dark]%>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up-down"><path d="M14.828 14.828 21 21"/><path d="M21 16v5h-5"/><path d="m21 3-9 9-4-4-6 6"/><path d="M21 8V3h-5"/></svg>
+            <span class="text-xs"><%= decorated_distance_for(distance) %></span>
+          </div>
+          <span class="text-sm self-end text-subtle"><%= factors[distance] %></span>
+          <span class="text-xl font-semibold"><%= decorated_time_for(paces[distance]) %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card m-3">
+    <h3 class="flex font-semibold leading-none mbe-1">Shoes</h3>
+    <p class="text-sm text-subtle mbe-3">Information about shoes</p>
+    <div class="flex flex-col gap mb-2">
+      <% Shoes.active.each do |shoes| %>
+        <%= link_to shoes do %>
+          <div class="flex flex-col pb-card-mark items-center justify-between border rounded-md pi-3 pb-1 bg-shade shadow-xs gap-half">
+            <div class="flex items-center justify-start gap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-footprints"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg>
+              <span class="text-xs font-bold uppercase"><%= shoes.full_name  %></span>
+            </div>
+            <div class="flex flex-col">
+              <span class=""><%= decorated_distance_for(shoes.distance) %></span>
+              <span class="">Retirement estimated: <%= shoes.estimated_retired_at %></span>
+            </div>
           </div>
         <% end %>
       <% end %>

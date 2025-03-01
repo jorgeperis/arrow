@@ -2,7 +2,7 @@
 COMMON_RACE_DISTANCES = {
   "1.609" => {
     name: "1M",
-    colors: { light: "#93c5fd", dark: "#3b82f6" }
+    colors: { light: "#34d399", dark: "#059669" }
   },
   "5.0" => {
     name: "5K",
@@ -10,11 +10,11 @@ COMMON_RACE_DISTANCES = {
   },
   "10.0" => {
     name: "10K",
-    colors: { light: "#6ee7b7", dark: "#10b981" }
+    colors: { light: "#c4b5fd", dark: "#8b5cf6" }
   },
   "21.097" => {
     name: "21K",
-    colors: { light: "#c4b5fd", dark: "#8b5cf6" }
+    colors: { light: "#6ee7b7", dark: "#10b981" }
   },
   "35.0" => {
     name: "35K",
@@ -22,11 +22,11 @@ COMMON_RACE_DISTANCES = {
   },
   "42.195" => {
     name: "42K",
-    colors: { light: "#f87171", dark: "#ef4444" }
+    colors: { light: "#93c5fd", dark: "#3b82f6" }
   },
   "50.0" => {
     name: "50K",
-    colors: { light: "#34d399", dark: "#059669" }
+    colors: { light: "#f87171", dark: "#ef4444" }
   },
   "100.0" => {
     name: "100K",
