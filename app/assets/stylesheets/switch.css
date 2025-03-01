@@ -4,18 +4,16 @@
   border-color: transparent;
   border-radius: var(--rounded-full);
   border-width: var(--border-2);
-  block-size: var(--size-6);
-  cursor: pointer;
-  inline-size: var(--size-11);
-  transition-duration: var(--time-150);
-  transition-property: var(--transition-colors);
+  block-size: var(--size-5);
+  inline-size: var(--size-9);
+  transition: background-color var(--time-150);
 
   &:checked {
     background-color: var(--color-primary);
   }
 
   &:checked::before {
-    margin-inline-start: var(--size-5);
+    margin-inline-start: var(--size-4);
   }
 
   &::before {
@@ -25,17 +23,14 @@
     border-radius: var(--rounded-full);
     content: "";
     display: block;
-    transition-duration: var(--time-150);
-    transition-property: margin;
+    transition: margin var(--time-150);
   }
 
   &:focus-visible {
     outline: var(--border-2) solid var(--color-selected-dark);
-    outline-offset: var(--border-2);
   }
 
   &:disabled {
-    cursor: not-allowed;
-    opacity: var(--opacity-50);
+    cursor: not-allowed; opacity: var(--opacity-50);
   }
 }

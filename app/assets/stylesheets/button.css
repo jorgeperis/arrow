@@ -1,22 +1,24 @@
 .btn {
   --btn-background: var(--color-bg);
+  --hover-color: oklch(from var(--btn-background) calc(l * .95) c h);
 
   align-items: center;
   background-color: var(--btn-background);
+  block-size: var(--btn-block-size, auto);
   border-radius: var(--btn-radius, var(--rounded-md));
   border: 1px solid var(--btn-border-color, var(--color-border));
-  box-shadow: var(--btn-box-shadow, var(--shadow-sm));
+  box-shadow: var(--btn-box-shadow, var(--shadow-xs));
   color: var(--btn-color, var(--color-text));
-  cursor: pointer;
+  column-gap: var(--size-2);
+  cursor: default;
   display: inline-flex;
   font-size: var(--btn-font-size, var(--text-sm));
   font-weight: var(--btn-font-weight, var(--font-medium));
-  gap: var(--size-2);
   inline-size: var(--btn-inline-size, auto);
   justify-content: var(--btn-justify-content, center);
-  min-block-size: var(--btn-block-size, var(--size-9));
-  padding: var(--btn-padding, 0.375rem 1rem);
-  text-align: center;
+  padding: var(--btn-padding, .375rem 1rem);
+  position: relative;
+  text-align: var(--btn-text-align, center);
   white-space: nowrap;
 
   img:not([class]) {
@@ -24,12 +26,11 @@
   }
 
   &:hover {
-    background-color: var(--btn-hover-color, oklch(from var(--btn-background) calc(l * .95) c h));
+    background-color: var(--btn-hover-color, var(--hover-color));
   }
 
   &:focus-visible {
     outline: var(--btn-outline-size, 2px) solid var(--color-selected-dark);
-    outline-offset: var(--border-2);
   }
 
   &:is(:disabled, [aria-disabled]) {
@@ -71,7 +72,6 @@
 
 .btn--plain {
   --btn-background: transparent;
-  --btn-block-size: auto;
   --btn-border-color: transparent;
   --btn-hover-color: transparent;
   --btn-padding: 0;
@@ -80,7 +80,6 @@
 
 .btn--icon {
   --btn-padding: var(--size-2);
-  --btn-radius: var(--rounded-full);
 }
 
 [aria-busy] .btn--loading:disabled {
@@ -89,15 +88,12 @@
   }
 
   &::after {
-    filter: var(--btn-icon-color, var(--color-filter-text));
-  }
-
-  &::after {
     animation: spin 1s linear infinite;
     background-image: url("loader-circle.svg");
     background-size: cover;
     block-size: var(--size-5);
     content: "";
+    filter: var(--btn-icon-color, var(--color-filter-text));
     inline-size: var(--size-5);
     position: absolute;
   }
