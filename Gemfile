@@ -62,4 +62,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "css-zero", "~> 1.1.8"
+gem "css-zero", "~> 1.1.13"
