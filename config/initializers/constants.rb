@@ -1,4 +1,4 @@
-# Certified road races. source: https://worldathletics.org/
+# Certified road races plus 15k. source: https://worldathletics.org/
 COMMON_RACE_DISTANCES = {
   "1.609" => {
     name: "1M",
@@ -11,6 +11,10 @@ COMMON_RACE_DISTANCES = {
   "10.0" => {
     name: "10K",
     colors: { light: "#c4b5fd", dark: "#8b5cf6" }
+  },
+  "15.0" => {
+    name: "15K",
+    colors: { light: "#fbbf24", dark: "#d97706" }
   },
   "21.097" => {
     name: "21K",
