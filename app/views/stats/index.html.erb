@@ -10,30 +10,3 @@
   <%= render "stats/cards/shoes" %>
 </div>
 
-<div class="flex items-center justify-between mbe-4">
-  <h2 class="font-bold text-2xl">Podiums</h2>
-</div>
-<% @stats.each do |distance, run_marks| %> 
-    <table class="table mbe-4">
-    <thead>
-      <div class="flex items-center gap">
-        <div class="font-semibold"><%= decorated_distance_for(distance) %></div>
-      </div>  
-    </thead>
-    <tbody>
-        <% run_marks.first(3).each do |run_mark| %>
-        <div class="flex flex-col items-start gap">
-            <tr>
-            <th><%= link_to run_mark.full_name, run_mark %></th>
-            <td><%= run_mark.date %></td>
-            <td><%= decorated_time_for(run_mark.pace) %></td>
-            </tr>
-        </div>
-        <% end %>
-    </table>
-<% end %>
-
-<div class="relative i-full">
-  <%= tag.canvas aria: { label: "Paces" }, role: "img", data: { controller: "chart", chart_type_value: "line", chart_data_value: @chart_data.to_json } %>
-</div>
-

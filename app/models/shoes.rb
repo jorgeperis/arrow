@@ -13,7 +13,7 @@ class Shoes < ApplicationRecord
   scope :active, -> { where(retired_at: nil) }
 
   def update_distance!
-    update_column(:distance, montly_distances.sum(:distance))
+    update_column(:distance, montly_distances.sum(:distance).round(2))
   end
 
   def active?
