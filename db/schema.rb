@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_01_111907) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_18_172419) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_111907) do
     t.index ["race_id"], name: "index_run_marks_on_race_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "shoes", force: :cascade do |t|
     t.string "brand", null: false
     t.string "model", null: false
@@ -58,6 +67,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_111907) do
     t.float "distance", default: 0.0, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
   add_foreign_key "montly_distances", "shoes"
   add_foreign_key "run_marks", "races"
+  add_foreign_key "sessions", "users"
 end
