@@ -16,3 +16,37 @@
  .pb-card-mark:hover {
     opacity: var(--opacity-75);
  }
+
+/* Stats cards grid */
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-4);
+}
+
+@media (max-width: 48rem) {
+  .stats-cards {
+    flex-direction: column;
+  }
+
+  .stats-cards .card {
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Smaller page titles on mobile */
+  .page-title {
+    font-size: var(--text-2xl);
+  }
+
+  /* Smaller header title on mobile */
+  #header h1 {
+    font-size: var(--text-base);
+  }
+
+  /* Stack header buttons */
+  .flex.items-center.justify-between {
+    flex-wrap: wrap;
+    gap: var(--size-2);
+  }
+}

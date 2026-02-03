@@ -20,13 +20,12 @@
   </thead>
   <tbody>
     <% @races.each do |race| %>
-      <div class="flex flex-col items-start gap">
-        <tr>
-          <th><%= link_to race.name, race %></th>
-          <td><%= decorated_distance_for(race.distance) %></td>
-          <td><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
-          <td><%= race.best_run_mark ? link_to(decorated_time_for(race.best_run_mark.time), race.best_run_mark) : "-" %></td>
-        </tr>
-      </div>
+      <tr>
+        <th><%= link_to race.name, race %></th>
+        <td data-label="Distance"><%= decorated_distance_for(race.distance) %></td>
+        <td data-label="Homologated"><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
+        <td data-label="Best mark"><%= race.best_run_mark ? link_to(decorated_time_for(race.best_run_mark.time), race.best_run_mark) : "-" %></td>
+      </tr>
     <% end %>
+  </tbody>
 </table>

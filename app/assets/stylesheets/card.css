@@ -6,6 +6,13 @@
   box-shadow: var(--shadow-sm);
 }
 
+@media (max-width: 48rem) {
+  .card {
+    padding: var(--size-4);
+    margin: var(--size-2) 0;
+  }
+}
+
 .card-selectable {
   background-color: var(--color-bg);
   border-radius: var(--rounded-xl);

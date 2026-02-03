@@ -21,14 +21,13 @@
   </thead>
   <tbody>
     <% @run_marks.each do |run_mark| %>
-      <div class="flex flex-col items-start gap">
-        <tr>
-          <th><%= link_to run_mark.full_name, run_mark %></th>
-          <td><%= run_mark.date %></td>
-          <td><%= decorated_distance_for(run_mark.distance) %></td>
-          <td><%= decorated_time_for(run_mark.time) %></td>
-          <td><%= decorated_time_for(run_mark.pace) %></td>
-        </tr>
-      </div>
+      <tr>
+        <th><%= link_to run_mark.full_name, run_mark %></th>
+        <td data-label="Date"><%= run_mark.date %></td>
+        <td data-label="Distance"><%= decorated_distance_for(run_mark.distance) %></td>
+        <td data-label="Time"><%= decorated_time_for(run_mark.time) %></td>
+        <td data-label="Pace"><%= decorated_time_for(run_mark.pace) %></td>
+      </tr>
     <% end %>
+  </tbody>
 </table>
