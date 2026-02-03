@@ -10,7 +10,7 @@ class Shoes < ApplicationRecord
   validates :distance, presence: true, numericality: { greater_or_equal_than: 0 }
 
   scope :ordered, -> { order(purchased_at: :desc) }
-  scope :active, -> { where(retired_at: nil) }
+  scope :active, -> { where(retired_at: nil).order(updated_at: :desc) }
 
   def update_distance!
     update_column(:distance, montly_distances.sum(:distance).round(2))
