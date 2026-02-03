@@ -1,14 +1,23 @@
 .btn {
-  --btn-background: var(--color-bg);
-  --hover-color: oklch(from var(--btn-background) calc(l * .95) c h);
+  --btn-background: #FFF5F0;
+  --hover-color: #FFE8DD;
+  --btn-default-border: #FFCDB8;
+  --btn-default-color: #E55A2B;
+
+  @media (prefers-color-scheme: dark) {
+    --btn-background: #2D1810;
+    --hover-color: #3D2218;
+    --btn-default-border: #5C3020;
+    --btn-default-color: #FF8A5C;
+  }
 
   align-items: center;
   background-color: var(--btn-background);
   block-size: var(--btn-block-size, auto);
   border-radius: var(--btn-radius, var(--rounded-md));
-  border: 1px solid var(--btn-border-color, var(--color-border));
+  border: 1px solid var(--btn-border-color, var(--btn-default-border));
   box-shadow: var(--btn-box-shadow, var(--shadow-xs));
-  color: var(--btn-color, var(--color-text));
+  color: var(--btn-color, var(--btn-default-color));
   column-gap: var(--size-2);
   cursor: default;
   display: inline-flex;

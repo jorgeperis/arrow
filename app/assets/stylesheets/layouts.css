@@ -83,7 +83,10 @@
     padding: var(--size-1);
   }
 
-  #bottom-nav a.active,
+  #bottom-nav a.active {
+    color: var(--color-accent);
+  }
+
   #bottom-nav a:hover {
     color: var(--color-text);
   }

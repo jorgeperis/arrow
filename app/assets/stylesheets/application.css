@@ -9,6 +9,41 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+/* Header branding with logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  text-decoration: none;
+}
+
+.header-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--rounded-lg);
+}
+
+.header-logo-text {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 48rem) {
+  .header-logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-logo-text {
+    font-size: var(--text-base);
+  }
+}
+
  .pb-card-mark {
     transition: opacity 0.3s ease;
  }
@@ -37,11 +72,6 @@
   /* Smaller page titles on mobile */
   .page-title {
     font-size: var(--text-2xl);
-  }
-
-  /* Smaller header title on mobile */
-  #header h1 {
-    font-size: var(--text-base);
   }
 
   /* Stack header buttons */
