@@ -80,3 +80,139 @@
     gap: var(--size-2);
   }
 }
+
+/* Run Mark Show Page */
+.run-mark-hero {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #F7931E 100%);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-6);
+  margin-bottom: var(--size-6);
+  color: white;
+  text-align: center;
+}
+
+.run-mark-hero-header {
+  margin-bottom: var(--size-4);
+}
+
+.run-mark-edition {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+.run-mark-race-name {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin: var(--size-1) 0;
+}
+
+.run-mark-date {
+  font-size: var(--text-sm);
+  opacity: 0.9;
+}
+
+.run-mark-time-display {
+  margin-top: var(--size-4);
+}
+
+.run-mark-time-label {
+  display: block;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: var(--size-1);
+}
+
+.run-mark-time {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.run-mark-source {
+  display: block;
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  margin-top: var(--size-2);
+}
+
+.run-mark-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--size-4);
+  margin-bottom: var(--size-6);
+}
+
+.run-mark-stat-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-lg);
+  padding: var(--size-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.run-mark-stat-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-accent);
+}
+
+.run-mark-stat-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.run-mark-stat-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.run-mark-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-4);
+  margin-bottom: var(--size-4);
+}
+
+.run-mark-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+}
+
+.run-mark-detail-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.run-mark-detail-value {
+  font-weight: 600;
+}
+
+@media (max-width: 48rem) {
+  .run-mark-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .run-mark-time {
+    font-size: var(--text-4xl);
+  }
+
+  .run-mark-race-name {
+    font-size: var(--text-xl);
+  }
+}
