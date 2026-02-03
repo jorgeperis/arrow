@@ -216,3 +216,265 @@
     font-size: var(--text-xl);
   }
 }
+
+/* Stats Page - Modern Layout */
+.stats-header {
+  margin-bottom: var(--size-6);
+}
+
+.stats-title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--size-1);
+}
+
+.stats-subtitle {
+  color: var(--color-text-subtle);
+  font-size: var(--text-base);
+}
+
+.stats-section {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-5);
+  margin-bottom: var(--size-6);
+}
+
+.stats-section--highlight {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%);
+  border-color: var(--color-accent);
+  border-width: 2px;
+}
+
+.stats-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--size-4);
+  flex-wrap: wrap;
+  gap: var(--size-2);
+}
+
+.stats-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.stats-section-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent);
+}
+
+.stats-section-badge {
+  background: var(--color-accent);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--size-1) var(--size-2);
+  border-radius: var(--rounded-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats-section-description {
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+  margin-bottom: var(--size-4);
+}
+
+/* Personal Bests Grid */
+.pb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--size-3);
+}
+
+.pb-card {
+  background: var(--color-bg);
+  border: 2px solid var(--pb-color);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-4);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+}
+
+.pb-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--pb-color);
+  background: var(--pb-color-light);
+}
+
+.pb-card-distance {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--pb-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pb-card-time {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.pb-card-pace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+.pb-card-pace-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.pb-card-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  opacity: 0.7;
+}
+
+/* Stats Grid 2 columns */
+.stats-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--size-6);
+}
+
+/* Estimated Paces */
+.estimated-paces-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+.estimated-pace-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-3);
+  background: var(--color-bg);
+  border-left: 3px solid var(--ep-color);
+  border-radius: var(--rounded-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.estimated-pace-distance {
+  font-weight: 700;
+  color: var(--ep-color);
+  min-width: 40px;
+}
+
+.estimated-pace-time {
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+  text-align: center;
+}
+
+.estimated-pace-per-km {
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Shoes List */
+.shoes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+}
+
+.shoe-card {
+  display: block;
+  padding: var(--size-4);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-lg);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.shoe-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.shoe-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--size-2);
+}
+
+.shoe-card-name {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.shoe-card-distance {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.shoe-card-progress {
+  height: 6px;
+  background: var(--color-border-light);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+  margin-bottom: var(--size-2);
+}
+
+.shoe-card-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent) 0%, #F7931E 100%);
+  border-radius: var(--rounded-full);
+  transition: width 0.3s ease;
+}
+
+.shoe-card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.shoe-card-retirement {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+/* Mobile responsive */
+@media (max-width: 48rem) {
+  .stats-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .pb-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
