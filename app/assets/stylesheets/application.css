@@ -463,6 +463,21 @@
   color: var(--color-text-subtle);
 }
 
+/* Page actions (edit, delete buttons) */
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2);
+  margin-top: var(--size-4);
+}
+
+@media (max-width: 48rem) {
+  .page-actions {
+    margin-bottom: var(--size-16);
+  }
+}
+
 /* Mobile responsive */
 @media (max-width: 48rem) {
   .stats-grid-2 {
