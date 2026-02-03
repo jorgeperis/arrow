@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: runtally
+service: arrow
 
 # Name of the container image.
-image: ghcr.io/jorgeperis/runtally
+image: ghcr.io/jorgeperis/arrow
 
 # Deploy to these servers.
 servers:
@@ -19,7 +19,7 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: run.peris.me
+  host: arrow.peris.me
 
 # Credentials for your image host.
 registry:
@@ -62,6 +62,7 @@ aliases:
 
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
+# Note: Keeping 'runtally_storage' volume name to preserve existing database
 volumes:
   - "runtally_storage:/rails/storage"
 
