@@ -9,23 +9,26 @@
   <%= link_to "New race", new_race_path, class: "btn btn--primary" %>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Distance</th>
-      <th>Homologated</th>
-      <th>Best mark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @races.each do |race| %>
-      <tr>
-        <th><%= link_to race.name, race %></th>
-        <td data-label="Distance"><%= decorated_distance_for(race.distance) %></td>
-        <td data-label="Homologated"><div class="badge <%= "badge--positive" if race.homologated? %>"><%= race.homologated? %></div></td>
-        <td data-label="Best mark"><%= race.best_run_mark ? link_to(decorated_time_for(race.best_run_mark.time), race.best_run_mark) : "-" %></td>
-      </tr>
+<div class="races-list">
+  <% @races.each do |race| %>
+    <% distance_data = COMMON_RACE_DISTANCES[race.distance.to_s] %>
+    <% race_color = distance_data ? distance_data[:colors][:dark] : "var(--color-accent)" %>
+    <% race_color_light = distance_data ? distance_data[:colors][:light] : "var(--color-accent-light)" %>
+    <%= link_to race, class: "race-card", style: "--race-color: #{race_color}; --race-color-light: #{race_color_light}" do %>
+      <div class="race-card-header">
+        <span class="race-card-distance"><%= distance_data ? distance_data[:name] : decorated_distance_for(race.distance) %></span>
+        <% if race.homologated? %>
+          <span class="race-card-badge">Homologated</span>
+        <% end %>
+      </div>
+      <h3 class="race-card-name"><%= race.name %></h3>
+      <p class="race-card-location"><%= race.location %></p>
+      <% if race.best_run_mark %>
+        <div class="race-card-best">
+          <span class="race-card-best-label">Best</span>
+          <span class="race-card-best-time"><%= decorated_time_for(race.best_run_mark.time) %></span>
+        </div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
