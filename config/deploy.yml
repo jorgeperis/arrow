@@ -7,7 +7,7 @@ image: ghcr.io/jorgeperis/arrow
 # Deploy to these servers.
 servers:
   web:
-    - 89.167.36.185
+    - 212.227.107.158
   # job:
   #   hosts:
   #     - 192.168.0.1
