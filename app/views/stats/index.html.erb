@@ -77,9 +77,6 @@
           <div class="shoe-card-progress">
             <div class="shoe-card-progress-bar" style="width: <%= [(shoes.distance / MAX_KM_FOR_SHOES.to_f * 100), 100].min %>%"></div>
           </div>
-          <div class="shoe-card-footer">
-            <span class="shoe-card-retirement">Retire: <%= shoes.estimated_retired_at %></span>
-          </div>
         <% end %>
       <% end %>
     </div>
