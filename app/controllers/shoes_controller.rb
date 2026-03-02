@@ -3,47 +3,31 @@ class ShoesController < ApplicationController
 
   # GET /shoes or /shoes.json
   def index
-    @shoes = Shoes.ordered
-  end
-
-  # GET /shoes/1 or /shoes/1.json
-  def show
+    @shoes = Current.shoes.ordered
   end
 
   # GET /shoes/new
   def new
-    @shoes = Shoes.new
-  end
-
-  # GET /shoes/1/edit
-  def edit
+    @shoes = Current.shoes.new
   end
 
   # POST /shoes or /shoes.json
   def create
-    @shoes = Shoes.new(shoes_params)
+    @shoes = Current.shoes.new(shoes_params)
 
-    respond_to do |format|
-      if @shoes.save
-        format.html { redirect_to @shoes, notice: "Shoes was successfully created." }
-        format.json { render :show, status: :created, location: @shoes }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shoes.errors, status: :unprocessable_entity }
-      end
+    if @shoes.save
+      redirect_to @shoes, notice: "Shoes was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /shoes/1 or /shoes/1.json
   def update
-    respond_to do |format|
-      if @shoes.update(shoes_params)
-        format.html { redirect_to @shoes, notice: "Shoes was successfully updated." }
-        format.json { render :show, status: :ok, location: @shoes }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @shoes.errors, status: :unprocessable_entity }
-      end
+    if @shoes.update(shoes_params)
+      redirect_to @shoes, notice: "Shoes was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -60,7 +44,7 @@ class ShoesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shoes
-      @shoes = Shoes.find(params.expect(:id))
+      @shoes = Current.shoes.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
