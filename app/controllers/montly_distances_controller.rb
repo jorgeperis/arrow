@@ -60,7 +60,7 @@ class MontlyDistancesController < ApplicationController
     end
 
     def set_shoes
-      @shoes = Shoes.find(params.expect(:shoes_id))
+      @shoes = Current.shoes.find(params.expect(:shoes_id))
     end
 
     # Only allow a list of trusted parameters through.
