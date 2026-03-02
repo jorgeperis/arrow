@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_18_172419) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_02_080528) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
@@ -65,6 +65,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_18_172419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "distance", default: 0.0, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_shoes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +80,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_18_172419) do
   add_foreign_key "montly_distances", "shoes"
   add_foreign_key "run_marks", "races"
   add_foreign_key "sessions", "users"
+  add_foreign_key "shoes", "users"
 end
