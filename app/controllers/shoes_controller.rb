@@ -1,7 +1,7 @@
 class ShoesController < ApplicationController
   before_action :set_shoes, only: %i[ show edit update destroy ]
 
-  # GET /shoes or /shoes.json
+  # GET /shoes
   def index
     @shoes = Current.shoes.ordered
   end
@@ -11,7 +11,7 @@ class ShoesController < ApplicationController
     @shoes = Current.shoes.new
   end
 
-  # POST /shoes or /shoes.json
+  # POST /shoes
   def create
     @shoes = Current.shoes.new(shoes_params)
 
@@ -22,7 +22,7 @@ class ShoesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shoes/1 or /shoes/1.json
+  # PATCH/PUT /shoes/1
   def update
     if @shoes.update(shoes_params)
       redirect_to @shoes, notice: "Shoes was successfully updated."
@@ -31,24 +31,21 @@ class ShoesController < ApplicationController
     end
   end
 
-  # DELETE /shoes/1 or /shoes/1.json
+  # DELETE /shoes/1
   def destroy
     @shoes.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to shoes_path, status: :see_other, notice: "Shoes was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to shoes_index_path, status: :see_other, notice: "Shoes was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shoes
-      @shoes = Current.shoes.find(params.expect(:id))
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shoes
+    @shoes = Current.shoes.find(params.expect(:id))
+  end
 
-    # Only allow a list of trusted parameters through.
-    def shoes_params
-      params.expect(shoes: [ :brand, :model, :size, :purchased_at, :price, :retired_at ])
-    end
+  # Only allow a list of trusted parameters through.
+  def shoes_params
+    params.expect(shoes: [ :brand, :model, :size, :purchased_at, :price, :retired_at ])
+  end
 end
