@@ -4,6 +4,12 @@ class UpdateShoesDistanceJob < ApplicationJob
   def perform(shoes_id)
     shoes = Shoes.find_by(id: shoes_id)
 
-    shoes&.with_lock { shoes.update_distance! }
+    if shoes.nil?
+      Rails.logger.warn "Shoes with id #{shoes_id} not found. Skipping distance update."
+    else
+      shoes&.with_lock { shoes.update_distance! }
+
+      Rails.logger.info "Updated distance for Shoes with id #{shoes_id}."
+    end
   end
 end
