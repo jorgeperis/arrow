@@ -159,7 +159,6 @@
 #   model: "Ghost 15",
 #   size: 44.4,
 #   purchased_at: Date.new(2024, 8, 30),
-#   price: 97.95
 # )
 
 # brooks.montly_distances.create!(

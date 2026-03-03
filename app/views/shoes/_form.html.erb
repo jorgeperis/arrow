@@ -32,11 +32,6 @@
   </div>
 
   <div class="flex flex-col gap-half mbe-4">
-    <%= form.label :price, class: "text-sm font-medium leading-none" %>
-    <%= form.text_field :price, class: "input" %>
-  </div>
-
-  <div class="flex flex-col gap-half mbe-4">
     <%= form.label :retired_at, class: "text-sm font-medium leading-none" %>
     <%= form.date_field :retired_at, class: "input input--datepicker", data: { controller: "datepicker" } %>
   </div>

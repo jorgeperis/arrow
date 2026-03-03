@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_02_080528) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_03_141549) do
   create_table "montly_distances", force: :cascade do |t|
     t.integer "shoes_id", null: false
     t.date "month", null: false
@@ -60,7 +60,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_02_080528) do
     t.string "model", null: false
     t.float "size", null: false
     t.date "purchased_at", null: false
-    t.float "price"
     t.date "retired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

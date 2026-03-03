@@ -29,16 +29,6 @@
     <p class="text-xs color-text-muted mbe-1">Purchased</p>
     <p class="font-medium"><%= @shoes.purchased_at.strftime("%b %d, %Y") %></p>
   </div>
-
-  <div class="card" style="flex: 1; min-width: 120px">
-    <p class="text-xs color-text-muted mbe-1">Price (€)</p>
-    <p class="font-medium"><%= number_to_currency(@shoes.price) || "-" %></p>
-  </div>
-
-  <div class="card" style="flex: 1; min-width: 120px">
-    <p class="text-xs color-text-muted mbe-1">Total</p>
-    <p class="font-medium"><%= distance_in_km(@shoes.distance) %></p>
-  </div>
 </div>
 
 <div class="card mbs-4">

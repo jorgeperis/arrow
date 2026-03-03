@@ -46,6 +46,6 @@ class ShoesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def shoes_params
-    params.expect(shoes: [ :brand, :model, :size, :purchased_at, :price, :retired_at ])
+    params.expect(shoes: [ :brand, :model, :size, :purchased_at, :retired_at ])
   end
 end
