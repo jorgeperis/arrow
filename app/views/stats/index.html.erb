@@ -68,7 +68,7 @@
       </h2>
     </div>
     <div class="shoes-list">
-      <% Current.shoes.active.each do |shoes| %>
+      <% current_user.shoes.active.each do |shoes| %>
         <%= link_to shoes, class: "shoe-card" do %>
           <div class="shoe-card-header">
             <span class="shoe-card-name"><%= shoes.full_name %></span>
