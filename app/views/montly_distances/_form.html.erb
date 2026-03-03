@@ -1,4 +1,4 @@
-<%= form_with(model: montly_distance.new_record? ? [montly_distance.shoes, montly_distance] : montly_distance, html: { contents: true }) do |form| %>
+<%= form_with(model: [@shoes, montly_distance], html: { contents: true }) do |form| %>
   <% if montly_distance.errors.any? %>
     <div class="alert alert--negative flex flex-col gap-half mbe-4" role="alert">
       <h2 class="font-medium leading-none"><%= pluralize(montly_distance.errors.count, "error") %> prohibited this montly_distance from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="flex flex-col items-start gap-half mbe-4">
     <%= form.label :month, class: "text-sm font-medium leading-none" %>
-    <%= form.month_field :month, class: "input" %>
+    <%= form.date_field :month, class: "input input--datepicker", data: { controller: "datepicker" } %>
   </div>
 
   <div class="flex flex-col items-start gap-half mbe-4">
@@ -22,6 +22,6 @@
   </div>
 
   <div class="inline-flex items-center mbs-2 mie-1">
-    <%= form.submit class: "btn btn--primary", value: "Add montly distance" %>
+    <%= form.submit class: "btn btn--primary" %>
   </div>
 <% end %>

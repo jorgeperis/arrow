@@ -59,7 +59,7 @@
           <td><%= montly_distance.month.strftime("%B %Y") %></td>
           <td><%= distance_in_km(montly_distance.distance) %></td>
           <td class="text-right">
-            <%= link_to "Edit", edit_montly_distance_path(montly_distance), class: "text-sm" %>
+            <%= link_to "Edit", edit_shoes_montly_distance_path(@shoes, montly_distance), class: "text-sm" %>
           </td>
         </tr>
       <% end %>

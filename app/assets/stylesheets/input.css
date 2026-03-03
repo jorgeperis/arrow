@@ -77,6 +77,5 @@
 
   .field_with_errors & {
     border-color: var(--color-negative);
-    display: contents;
   }
 }

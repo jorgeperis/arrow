@@ -4,7 +4,7 @@ class MontlyDistance < ApplicationRecord
   validates :distance, presence: true
 
   # TODO: Send a Job to be managed by solid_queue
-  after_commit -> { shoes.update_distance! }
+  after_commit -> { shoes.update_distance! if shoes.persisted? }
 
   scope :ordered, -> { order(month: :desc) }
 end
