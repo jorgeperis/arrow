@@ -11,27 +11,19 @@ class MontlyDistancesController < ApplicationController
   def create
     @montly_distance = @shoes.montly_distances.build(montly_distance_params)
 
-    respond_to do |format|
-      if @montly_distance.save
-        format.html { redirect_to @shoes, notice: "Montly distance was successfully created." }
-        format.json { redirect_to @shoes, notice: "Montly distance was successfully created."  }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @montly_distance.errors, status: :unprocessable_entity }
-      end
+    if @montly_distance.save
+      redirect_to @shoes, notice: "Montly distance was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /montly_distances/1 or /montly_distances/1.json
   def update
-    respond_to do |format|
-      if @montly_distance.update(montly_distance_params)
-        format.html { redirect_to @shoes, notice: "Montly distance was successfully updated." }
-        format.json { redirect_to @shoes, notice: "Montly distance was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @montly_distance.errors, status: :unprocessable_entity }
-      end
+    if @montly_distance.update(montly_distance_params)
+      redirect_to @shoes, notice: "Montly distance was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -39,10 +31,7 @@ class MontlyDistancesController < ApplicationController
   def destroy
     @montly_distance.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to @shoes, status: :see_other, notice: "Montly distance was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to @shoes, status: :see_other, notice: "Montly distance was successfully destroyed."
   end
 
   private
