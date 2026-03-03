@@ -3,17 +3,17 @@ class ShoesController < ApplicationController
 
   # GET /shoes
   def index
-    @shoes = Current.shoes.ordered
+    @shoes = current_user.shoes.ordered
   end
 
   # GET /shoes/new
   def new
-    @shoes = Current.shoes.new
+    @shoes = current_user.shoes.new
   end
 
   # POST /shoes
   def create
-    @shoes = Current.shoes.new(shoes_params)
+    @shoes = current_user.shoes.new(shoes_params)
 
     if @shoes.save
       redirect_to @shoes, notice: "Shoes was successfully created."
@@ -41,7 +41,7 @@ class ShoesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_shoes
-    @shoes = Current.shoes.find(params.expect(:id))
+    @shoes = current_user.shoes.find(params.expect(:id))
   end
 
   # Only allow a list of trusted parameters through.

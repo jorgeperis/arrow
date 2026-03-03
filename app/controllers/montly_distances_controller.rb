@@ -2,17 +2,9 @@ class MontlyDistancesController < ApplicationController
   before_action :set_shoes, only: %i[ new create ]
   before_action :set_montly_distance, only: %i[ show edit update destroy ]
 
-  # GET /montly_distances/1 or /montly_distances/1.json
-  def show
-  end
-
   # GET /montly_distances/new
   def new
     @montly_distance = @shoes.montly_distances.build
-  end
-
-  # GET /montly_distances/1/edit
-  def edit
   end
 
   # POST /montly_distances or /montly_distances.json
@@ -60,7 +52,7 @@ class MontlyDistancesController < ApplicationController
     end
 
     def set_shoes
-      @shoes = Current.shoes.find(params.expect(:shoes_id))
+      @shoes = current_user.shoes.find(params.expect(:shoes_id))
     end
 
     # Only allow a list of trusted parameters through.
