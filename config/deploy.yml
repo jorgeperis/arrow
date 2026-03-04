@@ -10,7 +10,7 @@ image: ghcr.io/jorgeperis/arrow
 # Deploy to these servers.
 servers:
   web:
-    - 212.227.107.158
+    - <%= ENV["DEPLOY_SERVER_IP"] %>
   # job:
   #   hosts:
   #     - 192.168.0.1
