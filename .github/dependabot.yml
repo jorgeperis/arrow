@@ -5,8 +5,32 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    security:
+      patterns:
+        - "*"
+      update-types:
+        - security
+    regular:
+      patterns:
+        - "*"
+      update-types:
+        - minor
+        - patch
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    security:
+      patterns:
+        - "*"
+      update-types:
+        - security
+    regular:
+      patterns:
+        - "*"
+      update-types:
+        - minor
+        - patch
