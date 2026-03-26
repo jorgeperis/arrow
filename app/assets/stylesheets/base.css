@@ -1,25 +1,27 @@
 :root {
-  /* Brand colors - Arrow orange */
-  --color-accent: #FF6B35;
-  --color-accent-light: #FF8A5C;
-  --color-accent-dark: #E55A2B;
+  /* Brand colors */
+  --color-accent: #FF5C35;
+  --color-accent-light: #FF7D5A;
+  --color-accent-dark: #E0451C;
 
   /* Abstractions */
-  --color-bg: white;
-  --color-text: black;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #F8F4F0;
+  --color-page-bg: #F7F3EF;
+  --color-text: #0F172A;
   --color-text-reversed: white;
-  --color-text-subtle: var(--zinc-500);
+  --color-text-subtle: #64748B;
   --color-link: var(--color-accent);
-  --color-border-light: var(--zinc-100);
-  --color-border: var(--zinc-200);
-  --color-border-dark: var(--zinc-400);
-  --color-selected: #FFF0EB;
-  --color-selected-dark: #FFD4C4;
+  --color-border-light: #EDE9E4;
+  --color-border: #DDD8D2;
+  --color-border-dark: #A89F96;
+  --color-selected: #FFF3EE;
+  --color-selected-dark: #FFCDB8;
   --color-highlight: var(--yellow-200);
 
   /* Accent colors */
   --color-primary: var(--color-accent);
-  --color-secondary: var(--zinc-100);
+  --color-secondary: #F8F4F0;
   --color-negative: var(--red-600);
   --color-positive: var(--green-600);
 
@@ -30,26 +32,25 @@
   --color-filter-positive: invert(44%) sepia(89%) saturate(409%) hue-rotate(89deg) brightness(94%) contrast(97%);
 
   @media (prefers-color-scheme: dark) {
-    /* Abstractions */
-    --color-bg: var(--zinc-950);
-    --color-text: white;
-    --color-text-reversed: black;
-    --color-text-subtle: var(--zinc-400);
+    --color-bg: #111827;
+    --color-bg-subtle: #0F172A;
+    --color-page-bg: #070B14;
+    --color-text: #F1F5F9;
+    --color-text-reversed: #0F172A;
+    --color-text-subtle: #94A3B8;
     --color-link: var(--color-accent-light);
-    --color-border-light: var(--zinc-900);
-    --color-border: var(--zinc-800);
-    --color-border-dark: var(--zinc-600);
+    --color-border-light: #1E293B;
+    --color-border: #334155;
+    --color-border-dark: #64748B;
     --color-selected: #2A1A14;
     --color-selected-dark: #3D2A1F;
     --color-highlight: var(--yellow-900);
 
-    /* Accent colors */
     --color-primary: var(--color-accent);
-    --color-secondary: var(--zinc-800);
+    --color-secondary: #1E293B;
     --color-negative: var(--red-900);
     --color-positive: var(--green-900);
 
-    /* SVG color values */
     --color-filter-text: invert(1);
     --color-filter-text-reversed: invert(0);
     --color-filter-negative: invert(15%) sepia(65%) saturate(2067%) hue-rotate(339deg) brightness(102%) contrast(97%);
@@ -65,16 +66,18 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-page-bg);
   color: var(--color-text);
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-synthesis-weight: none;
   overscroll-behavior: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .turbo-progress-bar {

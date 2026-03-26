@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag "css-zero/reset", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "css-zero/variables", "data-turbo-track": "reload" %>
@@ -50,11 +50,11 @@
             <span class="header-logo-text">Arrow</span>
           <% end %>
           <nav>
-            <ul class="flex space-x-4 mis-8">
-              <li><%= link_to 'Stats', root_path, class: "text-lg m-2" %></li>
-              <li><%= link_to 'Races', races_path, class: "text-lg m-2" %></li>
-              <li><%= link_to 'Run marks', run_marks_path, class: "text-lg m-2" %></li>
-              <li><%= link_to 'Shoes', shoes_index_path, class: "text-lg m-2" %></li>
+            <ul class="flex items-center mis-6" style="gap: 4px">
+              <li><%= link_to 'Stats', root_path, class: "nav-link #{current_page?(root_path) ? 'nav-link--active' : ''}" %></li>
+              <li><%= link_to 'Races', races_path, class: "nav-link #{current_page?(races_path) ? 'nav-link--active' : ''}" %></li>
+              <li><%= link_to 'Run marks', run_marks_path, class: "nav-link #{current_page?(run_marks_path) ? 'nav-link--active' : ''}" %></li>
+              <li><%= link_to 'Shoes', shoes_index_path, class: "nav-link #{controller_name == 'shoes' ? 'nav-link--active' : ''}" %></li>
             </ul>
           </nav>
         </div>

@@ -1,28 +1,30 @@
 .badge {
-  background-color: var(--badge-background, var(--color-bg));
-  border-radius: var(--rounded-md);
+  background-color: var(--badge-background, var(--color-border-light));
+  border-radius: var(--rounded-full);
   border: 1px solid var(--badge-border-color, var(--color-border));
   box-shadow: var(--badge-box-shadow, none);
-  color: var(--badge-color, var(--color-text));
+  color: var(--badge-color, var(--color-text-subtle));
   display: inline-flex;
-  font-size: var(--text-xs);
-  font-weight: var(--font-semibold);
-  line-height: var(--leading-4);
-  padding: var(--size-0_5) var(--size-2_5);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 4px 10px;
 }
 
 .badge--primary {
   --badge-background: var(--color-primary);
   --badge-border-color: transparent;
-  --badge-box-shadow: var(--shadow-sm);
-  --badge-color: var(--color-text-reversed);
+  --badge-box-shadow: 0 1px 4px rgba(255, 92, 53, 0.3);
+  --badge-color: white;
 }
 
 .badge--secondary {
   --badge-background: var(--color-secondary);
-  --badge-border-color: transparent;
+  --badge-border-color: var(--color-border);
   --badge-box-shadow: none;
-  --badge-color: var(--color-text);
+  --badge-color: var(--color-text-subtle);
 }
 
 .badge--positive {

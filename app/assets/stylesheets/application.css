@@ -1,12 +1,5 @@
 /*
  * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
  */
 
 /* Header branding with logo */
@@ -18,25 +11,23 @@
 }
 
 .header-logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--rounded-lg);
 }
 
 .header-logo-text {
-  font-family: 'Titillium Web', sans-serif;
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  font-style: italic;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
 }
 
 @media (max-width: 48rem) {
   .header-logo-icon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .header-logo-text {
@@ -44,13 +35,13 @@
   }
 }
 
- .pb-card-mark {
-    transition: opacity 0.3s ease;
- }
+.pb-card-mark {
+  transition: opacity 0.2s ease;
+}
 
- .pb-card-mark:hover {
-    opacity: var(--opacity-75);
- }
+.pb-card-mark:hover {
+  opacity: var(--opacity-75);
+}
 
 /* Stats cards grid */
 .stats-cards {
@@ -69,12 +60,10 @@
     width: 100%;
   }
 
-  /* Smaller page titles on mobile */
   .page-title {
     font-size: var(--text-2xl);
   }
 
-  /* Stack header buttons */
   .flex.items-center.justify-between {
     flex-wrap: wrap;
     gap: var(--size-2);
@@ -83,9 +72,9 @@
 
 /* Run Mark Show Page */
 .run-mark-hero {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #F7931E 100%);
-  border-radius: var(--rounded-xl);
-  padding: var(--size-6);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #FF8C42 100%);
+  border-radius: var(--rounded-2xl);
+  padding: var(--size-8);
   margin-bottom: var(--size-6);
   color: white;
   text-align: center;
@@ -96,49 +85,53 @@
 }
 
 .run-mark-edition {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.9;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 .run-mark-race-name {
   font-size: var(--text-2xl);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin: var(--size-1) 0;
 }
 
 .run-mark-date {
   font-size: var(--text-sm);
-  opacity: 0.9;
+  opacity: 0.8;
+  font-weight: 400;
 }
 
 .run-mark-time-display {
-  margin-top: var(--size-4);
+  margin-top: var(--size-5);
 }
 
 .run-mark-time-label {
   display: block;
   font-size: var(--text-xs);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.8;
-  margin-bottom: var(--size-1);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: var(--size-2);
 }
 
 .run-mark-time {
-  font-family: 'Titillium Web', sans-serif;
-  font-size: var(--text-5xl);
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
 .run-mark-source {
   display: block;
   font-size: var(--text-xs);
-  opacity: 0.7;
+  opacity: 0.65;
   margin-top: var(--size-2);
+  font-weight: 400;
 }
 
 .run-mark-stats {
@@ -150,19 +143,20 @@
 
 .run-mark-stat-card {
   background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--rounded-lg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--rounded-xl);
   padding: var(--size-4);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--size-2);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
 }
 
 .run-mark-stat-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   color: var(--color-accent);
 }
 
@@ -170,13 +164,15 @@
   font-size: var(--text-xl);
   font-weight: 700;
   color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
 .run-mark-stat-label {
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .run-mark-details {
@@ -196,7 +192,8 @@
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .run-mark-detail-value {
@@ -208,8 +205,9 @@
     grid-template-columns: 1fr;
   }
 
-  .run-mark-time {
-    font-size: var(--text-4xl);
+  .run-mark-hero {
+    padding: var(--size-6);
+    border-radius: var(--rounded-xl);
   }
 
   .run-mark-race-name {
@@ -217,43 +215,50 @@
   }
 }
 
-/* Stats Page - Modern Layout */
+/* Stats Page */
 .stats-header {
-  margin-bottom: var(--size-6);
+  margin-bottom: var(--size-8);
 }
 
 .stats-title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  font-style: italic;
-  color: var(--color-accent);
-  margin-bottom: var(--size-1);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  line-height: 1.05;
+  margin-bottom: var(--size-2);
 }
 
 .stats-subtitle {
   color: var(--color-text-subtle);
   font-size: var(--text-base);
+  font-weight: 400;
 }
 
 .stats-section {
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--rounded-xl);
-  padding: var(--size-5);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--rounded-2xl);
+  padding: var(--size-6);
   margin-bottom: var(--size-6);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04);
 }
 
 .stats-section--highlight {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%);
-  border-color: var(--color-accent);
-  border-width: 2px;
+  background: linear-gradient(160deg, #FFF9F7 0%, #FFFBF9 100%);
+  border-color: #FFD4C4;
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(160deg, #1F120E 0%, #1A0F0C 100%);
+    border-color: #5C3020;
+  }
 }
 
 .stats-section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--size-4);
+  margin-bottom: var(--size-5);
   flex-wrap: wrap;
   gap: var(--size-2);
 }
@@ -262,38 +267,42 @@
   display: flex;
   align-items: center;
   gap: var(--size-2);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
 .stats-section-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .stats-section-badge {
   background: var(--color-accent);
   color: white;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  padding: var(--size-1) var(--size-2);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: var(--rounded-full);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 6px rgba(255, 92, 53, 0.3);
 }
 
 .stats-section-description {
   color: var(--color-text-subtle);
   font-size: var(--text-sm);
   margin-bottom: var(--size-4);
+  font-weight: 400;
 }
 
 /* Personal Bests Grid */
 .pb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: var(--size-3);
 }
 
@@ -311,14 +320,13 @@
 }
 
 .pb-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: var(--pb-color);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.1);
   background: var(--pb-color-light);
 }
 
 .pb-card-distance {
-  font-size: var(--text-sm);
+  font-size: 11px;
   font-weight: 700;
   color: var(--pb-color);
   text-transform: uppercase;
@@ -326,10 +334,9 @@
 }
 
 .pb-card-time {
-  font-family: 'Titillium Web', sans-serif;
   font-size: var(--text-2xl);
-  font-weight: 700;
-  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--color-text);
   line-height: 1;
 }
@@ -341,17 +348,19 @@
   gap: var(--size-1);
   font-size: var(--text-sm);
   color: var(--color-text-subtle);
+  font-weight: 500;
 }
 
 .pb-card-pace-icon {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 
 .pb-card-date {
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
   opacity: 0.7;
+  font-weight: 400;
 }
 
 /* Stats Grid 2 columns */
@@ -372,24 +381,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--size-3);
-  background: var(--color-bg);
+  padding: var(--size-3) var(--size-4);
+  background: var(--color-bg-subtle);
   border-left: 3px solid var(--ep-color);
-  border-radius: var(--rounded-md);
-  box-shadow: var(--shadow-xs);
+  border-radius: var(--rounded-lg);
 }
 
 .estimated-pace-distance {
   font-weight: 700;
   color: var(--ep-color);
   min-width: 40px;
+  font-size: var(--text-sm);
 }
 
 .estimated-pace-time {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
   flex: 1;
   text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .estimated-pace-per-km {
@@ -397,6 +407,7 @@
   color: var(--color-text-subtle);
   min-width: 70px;
   text-align: right;
+  font-weight: 500;
 }
 
 /* Shoes List */
@@ -410,36 +421,41 @@
   display: block;
   padding: var(--size-4);
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--rounded-lg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--rounded-xl);
   text-decoration: none;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04);
 }
 
 .shoe-card:hover {
   border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.07);
+  transform: translateY(-1px);
 }
 
 .shoe-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--size-2);
+  margin-bottom: var(--size-3);
 }
 
 .shoe-card-name {
   font-weight: 600;
   color: var(--color-text);
+  font-size: var(--text-sm);
 }
 
 .shoe-card-distance {
   font-weight: 700;
   color: var(--color-accent);
+  font-size: var(--text-sm);
+  letter-spacing: -0.01em;
 }
 
 .shoe-card-progress {
-  height: 6px;
+  height: 5px;
   background: var(--color-border-light);
   border-radius: var(--rounded-full);
   overflow: hidden;
@@ -448,9 +464,9 @@
 
 .shoe-card-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, #F7931E 100%);
+  background: linear-gradient(90deg, var(--color-accent) 0%, #FF8C42 100%);
   border-radius: var(--rounded-full);
-  transition: width 0.3s ease;
+  transition: width 0.4s ease;
 }
 
 .shoe-card-footer {
@@ -461,9 +477,10 @@
 .shoe-card-retirement {
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
+  font-weight: 400;
 }
 
-/* Page actions (edit, delete buttons) */
+/* Page actions */
 .page-actions {
   display: flex;
   flex-wrap: wrap;
@@ -488,36 +505,38 @@
 .top-three-row {
   background: var(--color-bg);
   border-left: 4px solid var(--tt-color);
-  border-radius: var(--rounded-lg);
-  padding: var(--size-4);
-  box-shadow: var(--shadow-xs);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-4) var(--size-5);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04);
+  border: 1px solid var(--color-border-light);
+  border-left: 4px solid var(--tt-color);
   display: flex;
   flex-direction: column;
   gap: var(--size-3);
 }
 
 .top-three-row-title {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--tt-color);
+  letter-spacing: -0.01em;
 }
 
 .top-three-items {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: var(--size-2);
+  gap: var(--size-1_5);
 }
 
 .top-three-item {
   display: flex;
   align-items: center;
   gap: var(--size-3);
-  padding: var(--size-3);
-  border-radius: var(--rounded-md);
+  padding: var(--size-2_5) var(--size-3);
+  border-radius: var(--rounded-lg);
   text-decoration: none;
-  transition: background-color 0.2s ease;
-  flex: 1;
+  transition: background-color 0.15s ease;
   background: var(--color-bg-subtle);
 }
 
@@ -526,14 +545,14 @@
 }
 
 .top-three-rank {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--tt-color);
   color: white;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 700;
   border-radius: var(--rounded-full);
   flex-shrink: 0;
@@ -542,14 +561,13 @@
 .top-three-info {
   display: flex;
   flex-direction: column;
-  gap: var(--size-1);
+  gap: 2px;
 }
 
 .top-three-time {
-  font-family: 'Titillium Web', sans-serif;
-  font-size: var(--text-lg);
-  font-weight: 700;
-  font-style: italic;
+  font-size: var(--text-base);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--color-text);
   line-height: 1;
 }
@@ -557,6 +575,7 @@
 .top-three-pace {
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
+  font-weight: 400;
 }
 
 .top-three-name {
@@ -570,6 +589,7 @@
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
   white-space: nowrap;
+  font-weight: 400;
 }
 
 /* Races List */
@@ -581,9 +601,9 @@
 
 .race-card {
   background: var(--color-bg);
-  border: 2px solid var(--race-color);
-  border-radius: var(--rounded-xl);
-  padding: var(--size-4);
+  border: 1.5px solid var(--race-color);
+  border-radius: var(--rounded-2xl);
+  padding: var(--size-5);
   text-decoration: none;
   transition: all 0.2s ease;
   display: flex;
@@ -592,8 +612,8 @@
 }
 
 .race-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.09);
   background: var(--race-color-light);
 }
 
@@ -605,7 +625,7 @@
 }
 
 .race-card-distance {
-  font-size: var(--text-sm);
+  font-size: 11px;
   font-weight: 700;
   color: var(--race-color);
   text-transform: uppercase;
@@ -616,16 +636,17 @@
   background: var(--color-accent);
   color: white;
   font-size: 10px;
-  font-weight: 600;
-  padding: 2px 6px;
+  font-weight: 700;
+  padding: 3px 8px;
   border-radius: var(--rounded-full);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 .race-card-name {
   font-size: var(--text-lg);
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text);
   line-height: 1.2;
 }
@@ -633,6 +654,7 @@
 .race-card-location {
   font-size: var(--text-sm);
   color: var(--color-text-subtle);
+  font-weight: 400;
 }
 
 .race-card-best {
@@ -641,20 +663,21 @@
   gap: var(--size-2);
   margin-top: var(--size-2);
   padding-top: var(--size-2);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-light);
 }
 
 .race-card-best-label {
   font-size: var(--text-xs);
   color: var(--color-text-subtle);
   text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .race-card-best-time {
-  font-family: 'Titillium Web', sans-serif;
   font-size: var(--text-lg);
-  font-weight: 700;
-  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--race-color);
 }
 
@@ -673,4 +696,7 @@
     align-items: flex-start;
   }
 
+  .stats-section {
+    border-radius: var(--rounded-xl);
+  }
 }
