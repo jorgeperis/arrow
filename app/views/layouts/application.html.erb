@@ -22,8 +22,9 @@
 
     <script>
       (function() {
-        var theme = localStorage.getItem("theme");
-        if (theme) document.documentElement.dataset.theme = theme;
+        var theme = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
       })();
     </script>
     <%= stylesheet_link_tag "css-zero/reset", "data-turbo-track": "reload" %>
