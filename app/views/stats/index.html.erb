@@ -43,18 +43,19 @@
       Estimated Paces
     </h2>
   </div>
-  <% run_mark = RunMark.homologated.last %>
-  <p class="stats-section-description">Based on <%= run_mark.full_name %></p>
-  <div class="estimated-paces-list">
-    <% EstimatedPaces.for(run_mark).each do |distance, time| %>
-      <% distance_data = COMMON_RACE_DISTANCES[distance] %>
-      <div class="estimated-pace-item" style="--ep-color: <%= distance_data[:colors][:dark] %>">
-        <span class="estimated-pace-distance"><%= distance_data[:name] %></span>
-        <span class="estimated-pace-time"><%= decorated_time_for(time) %></span>
-        <span class="estimated-pace-per-km"><%= decorated_time_for((time / distance.to_f).round) %>/km</span>
-      </div>
-    <% end %>
-  </div>
+  <% if (run_mark = RunMark.homologated.last) %>
+    <p class="stats-section-description">Based on <%= run_mark.full_name %></p>
+    <div class="estimated-paces-list">
+      <% EstimatedPaces.for(run_mark).each do |distance, time| %>
+        <% distance_data = COMMON_RACE_DISTANCES[distance] %>
+        <div class="estimated-pace-item" style="--ep-color: <%= distance_data[:colors][:dark] %>">
+          <span class="estimated-pace-distance"><%= distance_data[:name] %></span>
+          <span class="estimated-pace-time"><%= decorated_time_for(time) %></span>
+          <span class="estimated-pace-per-km"><%= decorated_time_for((time / distance.to_f).round) %>/km</span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </section>
 
 <section class="stats-section">
