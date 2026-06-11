@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_11_074728) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_11_082729) do
   create_table "races", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.float "distance", default: 0.0, null: false
@@ -22,6 +22,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_074728) do
     t.integer "user_id", null: false
     t.index ["user_id", "name", "distance", "location"], name: "index_races_on_user_id_name_distance_location", unique: true
     t.index ["user_id"], name: "index_races_on_user_id"
+  end
+
+  create_table "run_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "run_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["run_id", "tag_id"], name: "index_run_tags_on_run_id_and_tag_id", unique: true
+    t.index ["run_id"], name: "index_run_tags_on_run_id"
+    t.index ["tag_id"], name: "index_run_tags_on_tag_id"
   end
 
   create_table "runs", force: :cascade do |t|
@@ -167,6 +177,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_074728) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "color", null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id", "name"], name: "index_tags_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email_address", null: false
@@ -176,6 +196,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_074728) do
   end
 
   add_foreign_key "races", "users"
+  add_foreign_key "run_tags", "runs"
+  add_foreign_key "run_tags", "tags"
   add_foreign_key "runs", "races"
   add_foreign_key "runs", "users"
   add_foreign_key "sessions", "users"
@@ -185,4 +207,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_074728) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "tags", "users"
 end

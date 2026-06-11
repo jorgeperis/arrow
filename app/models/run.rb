@@ -1,6 +1,8 @@
 class Run < ApplicationRecord
   belongs_to :user
   belongs_to :race, counter_cache: true
+  has_many :run_tags, dependent: :destroy
+  has_many :tags, through: :run_tags
 
   validates :date, presence: true
   validates :time, presence: true, numericality: { greater_than: 0 }
