@@ -71,6 +71,6 @@ class RunMarksController < ApplicationController
 
       params[:run_mark][:time] = hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
 
-      params.expect(run_mark: [ :race_id, :edition, :date, :distance, :homologated, :time, :source ])
+      params.expect(run_mark: [ :race_id, :date, :distance, :homologated, :time ])
     end
 end
