@@ -17,6 +17,7 @@
       <th>Distance</th>
       <th>Time</th>
       <th>Pace</th>
+      <th>Tags</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,11 @@
         <td data-label="Distance"><%= decorated_distance_for(run.distance) %></td>
         <td data-label="Time"><%= decorated_time_for(run.time) %></td>
         <td data-label="Pace"><%= decorated_time_for(run.pace) %></td>
+        <td data-label="Tags">
+          <% run.tags.each do |tag| %>
+            <span class="badge" style="--badge-background: <%= tag.color %>; --badge-color: white; --badge-border-color: transparent;"><%= tag.name %></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

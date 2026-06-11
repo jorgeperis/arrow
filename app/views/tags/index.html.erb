@@ -1,0 +1,40 @@
+<% if notice.present? %>
+  <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
+<% end %>
+
+<% content_for :title, "Tags" %>
+
+<div class="flex items-center justify-between mbe-4">
+  <h1 class="font-bold text-4xl">Tags</h1>
+  <%= link_to "New tag", new_tag_path, class: "btn btn--primary" %>
+</div>
+
+<% if @tags.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>Runs</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td>
+            <span class="badge" style="--badge-background: <%= tag.color %>; --badge-color: white; --badge-border-color: transparent;">
+              <%= tag.name %>
+            </span>
+          </td>
+          <td><%= tag.runs.count %></td>
+          <td class="inline-flex gap-half">
+            <%= link_to "Edit", edit_tag_path(tag), class: "btn btn--secondary" %>
+            <%= button_to "Delete", tag, method: :delete, class: "btn btn--negative", data: { turbo_confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-subtle">No tags yet. Create one to start organising your runs.</p>
+<% end %>

@@ -3,7 +3,7 @@ class RunsController < ApplicationController
 
   # GET /runs or /runs.json
   def index
-    @runs = current_user.runs.ordered
+    @runs = current_user.runs.includes(:tags).ordered
   end
 
   # GET /runs/1 or /runs/1.json
@@ -13,10 +13,12 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
+    @tags = current_user.tags.ordered
   end
 
   # GET /runs/1/edit
   def edit
+    @tags = current_user.tags.ordered
   end
 
   # POST /runs or /runs.json
@@ -28,6 +30,7 @@ class RunsController < ApplicationController
         format.html { redirect_to @run, notice: "Run was successfully created." }
         format.json { render :show, status: :created, location: @run }
       else
+        @tags = current_user.tags.ordered
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end
@@ -41,6 +44,7 @@ class RunsController < ApplicationController
         format.html { redirect_to @run, notice: "Run was successfully updated." }
         format.json { render :show, status: :ok, location: @run }
       else
+        @tags = current_user.tags.ordered
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @run.errors, status: :unprocessable_entity }
       end
@@ -71,6 +75,6 @@ class RunsController < ApplicationController
         )
       end
 
-      params.expect(run: [ :race_id, :date, :distance, :homologated, :time ])
+      params.expect(run: [ :race_id, :date, :distance, :homologated, :time, tag_ids: [] ])
     end
 end
