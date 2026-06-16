@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
-  root "stats#index"
+  root "pages#home"
 
   resources :stats, only: [ :index ]
   resources :runs
