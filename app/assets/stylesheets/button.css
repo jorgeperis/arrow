@@ -4,13 +4,6 @@
   --btn-default-border: #FECDBB;
   --btn-default-color: #C93F18;
 
-  @media (prefers-color-scheme: dark) {
-    --btn-background: #2D1810;
-    --hover-color: #3D2218;
-    --btn-default-border: #5C3020;
-    --btn-default-color: #FF8A5C;
-  }
-
   align-items: center;
   background-color: var(--btn-background);
   block-size: var(--btn-block-size, auto);
@@ -76,13 +69,6 @@
   --btn-border-color: var(--color-border);
   --btn-color: var(--color-text-subtle);
   --btn-hover-color: var(--color-border-light);
-
-  @media (prefers-color-scheme: dark) {
-    --btn-background: transparent;
-    --btn-border-color: var(--color-border);
-    --btn-color: var(--color-text-subtle);
-    --btn-hover-color: var(--color-border-light);
-  }
 }
 
 .btn--borderless {
