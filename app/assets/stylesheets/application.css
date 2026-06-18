@@ -507,6 +507,212 @@
   font-weight: 500;
 }
 
+/* Section header link */
+.stats-section-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.stats-section-link:hover {
+  text-decoration: underline;
+}
+
+/* Goals */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+}
+
+.goal-card {
+  border: 1px solid var(--color-border-light);
+  border-inline-start: 4px solid var(--goal-color);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+.goal-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--size-2);
+}
+
+.goal-card-distance {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--goal-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.goal-card-target {
+  font-size: var(--text-base);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.goal-progress {
+  height: 8px;
+  background: var(--color-border-light);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+}
+
+.goal-progress-bar {
+  height: 100%;
+  background: var(--goal-color);
+  border-radius: var(--rounded-full);
+  transition: width 0.3s ease;
+}
+
+.goal-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+.goal-gap {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.goal-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--rounded-full);
+}
+
+.goal-badge--done {
+  background: var(--color-positive);
+  color: white;
+}
+
+.goal-card-actions {
+  display: flex;
+  gap: var(--size-2);
+}
+
+.goal-form-fields {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--size-3);
+}
+
+.goal-form-fields > div {
+  flex: 1 1 160px;
+}
+
+/* This Season */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--size-3);
+}
+
+.season-card {
+  border: 1px solid var(--season-color);
+  border-radius: var(--rounded-xl);
+  padding: var(--size-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+}
+
+.season-distance {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--season-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.season-time {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.season-time:hover {
+  color: var(--season-color);
+}
+
+.season-delta {
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.season-delta.is-faster {
+  color: #059669;
+}
+
+.season-delta.is-slower,
+.season-delta--new {
+  color: var(--color-text-subtle);
+}
+
+/* Activity Calendar */
+.calendar-heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  overflow-x: auto;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: 2.5rem repeat(12, 1fr);
+  gap: var(--size-1);
+  align-items: center;
+  min-width: 320px;
+}
+
+.calendar-year-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-subtle);
+}
+
+.calendar-month-label {
+  font-size: 10px;
+  text-align: center;
+  color: var(--color-text-subtle);
+  opacity: 0.7;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  border-radius: var(--rounded-sm);
+  background: var(--color-border-light);
+}
+
+.calendar-cell--l1 {
+  background: rgb(from var(--color-accent) r g b / 0.35);
+}
+
+.calendar-cell--l2 {
+  background: rgb(from var(--color-accent) r g b / 0.65);
+}
+
+.calendar-cell--l3 {
+  background: var(--color-accent);
+}
+
 /* Estimated Paces */
 .estimated-paces-list {
   display: flex;

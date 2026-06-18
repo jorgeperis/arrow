@@ -20,5 +20,19 @@ class StatsController < ApplicationController
           .transform_values { |year_runs| year_runs.min_by(&:time) }
           .sort_by { |year, _| year }
     end
+
+    current_year = Date.current.year
+    @season = @progression.transform_values do |entries|
+      by_year = entries.to_h
+      { current: by_year[current_year], previous: by_year[current_year - 1] }
+    end
+
+    @activity = runs.group(
+      Arel.sql("strftime('%Y', runs.date)"),
+      Arel.sql("strftime('%m', runs.date)")
+    ).count
+
+    @goals = current_user.goals.ordered
+    @scoring_available = AgeGrading.available?
   end
 end

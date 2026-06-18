@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_18_090943) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_18_120001) do
+  create_table "goals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.float "distance", null: false
+    t.integer "target_time", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id", "distance"], name: "index_goals_on_user_id_and_distance", unique: true
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
   create_table "races", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.float "distance", default: 0.0, null: false
@@ -186,13 +196,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_18_090943) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.date "birthdate"
     t.datetime "created_at", null: false
     t.string "email_address", null: false
+    t.string "gender"
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "goals", "users"
   add_foreign_key "races", "users"
   add_foreign_key "run_tags", "runs"
   add_foreign_key "run_tags", "tags"

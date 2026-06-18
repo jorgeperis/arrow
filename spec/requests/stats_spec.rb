@@ -24,6 +24,26 @@ RSpec.describe "Stats", type: :request do
         expect(response.body).to include(run_path(latest))
         expect(response.body).to include(race.name)
       end
+
+      it "renders the new sections" do
+        get stats_path
+
+        expect(response.body).to include("This Season")
+        expect(response.body).to include("Activity Calendar")
+        expect(response.body).to include("Goals")
+        expect(response.body).to include("Performance Score")
+      end
+
+      it "prompts to complete the profile for scoring when it is missing" do
+        get stats_path
+        expect(response.body).to include(edit_profile_path)
+      end
+
+      it "shows goals with progress" do
+        create(:goal, user: user, distance: 10.0, target_time: 2400)
+        get stats_path
+        expect(response.body).to include("Target")
+      end
     end
 
     context "when not authenticated" do

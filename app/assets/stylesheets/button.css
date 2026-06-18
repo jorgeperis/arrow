@@ -102,6 +102,12 @@
   --btn-padding: var(--size-2);
 }
 
+.btn--small {
+  --btn-padding: .3rem .7rem;
+  --btn-font-size: var(--text-xs);
+  --btn-radius: var(--rounded-md);
+}
+
 [aria-busy] .btn--loading:disabled {
   > * {
     visibility: hidden;
