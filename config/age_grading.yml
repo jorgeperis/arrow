@@ -1,0 +1,17 @@
+# Age-grading standards (WMA road running age factors / age standards).
+#
+# Structure expected by AgeGrading:
+#
+#   standards:
+#     male:
+#       "10.0":        # distance in km, matching Run#distance.to_s
+#         "35": 1620   # age in years => age-standard time in seconds
+#         "36": 1623
+#     female:
+#       "10.0":
+#         "35": 1830
+#
+# Populate from an authoritative source before enabling scoring, e.g. the
+# World Masters Athletics age-grading tables (Howard Grubb's published data).
+# Until `standards` is present and non-empty, AgeGrading returns no scores.
+standards: {}

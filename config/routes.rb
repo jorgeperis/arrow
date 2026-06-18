@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :stats, only: [ :index ]
+  resources :goals, except: [ :show ]
+  resource :profile, only: [ :edit, :update ]
   resources :runs
   resources :races
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

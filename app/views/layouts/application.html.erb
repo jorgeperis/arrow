@@ -54,12 +54,13 @@
               <li><%= link_to 'Stats', stats_path, class: "nav-link #{current_page?(stats_path) ? 'nav-link--active' : ''}" %></li>
               <li><%= link_to 'Races', races_path, class: "nav-link #{current_page?(races_path) ? 'nav-link--active' : ''}" %></li>
               <li><%= link_to 'Runs', runs_path, class: "nav-link #{current_page?(runs_path) ? 'nav-link--active' : ''}" %></li>
+              <li><%= link_to 'Goals', goals_path, class: "nav-link #{current_page?(goals_path) ? 'nav-link--active' : ''}" %></li>
             </ul>
           </nav>
         </div>
         <div class="flex items-center">
           <% if Current.user %>
-            <span class="text-sm mie-4 user-email"><%= Current.user.email_address %></span>
+            <%= link_to Current.user.email_address, edit_profile_path, class: "text-sm mie-4 user-email" %>
             <%= button_to 'Log out', session_path, method: :delete, class: "btn btn--secondary" %>
           <% else %>
             <%= link_to 'Log in', new_session_path, class: "btn btn--primary" %>

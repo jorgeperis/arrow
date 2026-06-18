@@ -1,0 +1,24 @@
+require "rails_helper"
+
+RSpec.describe AgeGrading do
+  let(:user) { create(:user, gender: "male", birthdate: Date.new(1986, 1, 1)) }
+  let(:race) { create(:race, user: user, distance: 10.0) }
+  let(:run) { create(:run, user: user, race: race, distance: 10.0, time: 2000, date: Date.new(2021, 6, 1)) }
+
+  it "returns nil when no coefficient data is loaded" do
+    allow(described_class).to receive(:data).and_return({ "standards" => {} })
+    expect(described_class.for(run, user)).to be_nil
+  end
+
+  it "returns nil when the profile is incomplete" do
+    allow(described_class).to receive(:data).and_return({ "standards" => { "male" => { "10.0" => { "35" => 1600 } } } })
+    incomplete = create(:user)
+    expect(described_class.for(run, incomplete)).to be_nil
+  end
+
+  it "computes an age-graded percentage from the standard time" do
+    # User is 35 on the run date (2021 - 1986); standard 1600s vs actual 2000s.
+    allow(described_class).to receive(:data).and_return({ "standards" => { "male" => { "10.0" => { "35" => 1600 } } } })
+    expect(described_class.for(run, user)).to eq(80.0)
+  end
+end
