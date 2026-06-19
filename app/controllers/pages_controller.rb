@@ -3,6 +3,6 @@ class PagesController < ApplicationController
   layout "landing"
 
   def home
-    redirect_to stats_path if Current.user
+    redirect_to stats_path if authenticated?
   end
 end
