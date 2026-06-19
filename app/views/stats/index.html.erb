@@ -39,9 +39,12 @@
       <% distance_data = COMMON_RACE_DISTANCES[run.distance.to_s] %>
       <%= link_to run, class: "pb-card #{"pb-card--has-photo" if run.image.attached?}", style: "--pb-color: #{distance_data[:colors][:dark]}; --pb-color-light: #{distance_data[:colors][:light]}" do %>
         <% if run.image.attached? %>
-          <%= image_tag run.image.variant(resize_to_fill: [ 400, 300 ]), class: "pb-card-photo", loading: "lazy", alt: "" %>
+          <%= image_tag run.image.variant(resize_to_fill: [ 600, 400 ]), class: "pb-card-photo", loading: "lazy", alt: "" %>
         <% end %>
-        <div class="pb-card-distance"><%= distance_data[:name] %></div>
+        <div class="pb-card-heading">
+          <div class="pb-card-distance"><%= distance_data[:name] %></div>
+          <div class="pb-card-name"><%= run.race.name %></div>
+        </div>
         <div class="pb-card-time"><%= decorated_time_for(run.time) %></div>
         <div class="pb-card-pace">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="pb-card-pace-icon">

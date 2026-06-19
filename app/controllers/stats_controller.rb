@@ -4,7 +4,7 @@ class StatsController < ApplicationController
 
     @favourite_distances = current_user.favourite_race_distances
 
-    @best_marks = runs.best_common_distances.with_attached_image
+    @best_marks = runs.best_common_distances.includes(:race).with_attached_image
     @last_run = runs.ordered.first
     @top_runs_by_distance = @favourite_distances.keys.index_with do |distance|
       runs.where(distance: distance).order(:time).limit(3)

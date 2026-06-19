@@ -341,7 +341,7 @@
 /* Personal Bests Grid */
 .pb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--size-3);
 }
 
@@ -349,13 +349,15 @@
   background: var(--color-bg);
   border: 2px solid var(--pb-color);
   border-radius: var(--rounded-xl);
-  padding: var(--size-4);
-  text-align: center;
+  padding: var(--size-4) var(--size-5);
+  text-align: left;
   text-decoration: none;
   transition: all 0.2s ease;
   display: flex;
-  flex-direction: column;
-  gap: var(--size-1);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--size-4);
+  min-height: 4.5rem;
 }
 
 .pb-card:hover {
@@ -364,12 +366,29 @@
   background: var(--pb-color-light);
 }
 
+.pb-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  min-width: 0;
+  max-width: 16rem;
+}
+
 .pb-card-distance {
   font-size: 11px;
   font-weight: 700;
   color: var(--pb-color);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.pb-card-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pb-card-time {
@@ -383,7 +402,7 @@
 .pb-card-pace {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--size-1);
   font-size: var(--text-sm);
   color: var(--color-text-subtle);
@@ -400,12 +419,15 @@
   color: var(--color-text-subtle);
   opacity: 0.7;
   font-weight: 400;
+  margin-inline-start: auto;
 }
 
 .pb-card--has-photo {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  min-height: 11.5rem;
+  align-items: flex-end;
 }
 
 .pb-card-photo {
@@ -422,7 +444,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 0.75) 100%);
+  background: linear-gradient(180deg, rgb(0 0 0 / 0) 35%, rgb(0 0 0 / 0.5) 100%);
 }
 
 .pb-card--has-photo:hover {
@@ -433,6 +455,7 @@
   color: white;
 }
 
+.pb-card--has-photo .pb-card-name,
 .pb-card--has-photo .pb-card-time,
 .pb-card--has-photo .pb-card-pace,
 .pb-card--has-photo .pb-card-date {
@@ -1024,7 +1047,7 @@
   }
 
   .pb-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .stats-numbers {
