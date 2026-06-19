@@ -1,10 +1,16 @@
 class Run < ApplicationRecord
+  ACCEPTED_IMAGE_TYPES = %w[ image/png image/jpeg image/webp ].freeze
+  MAX_IMAGE_SIZE = 8.megabytes
+
   belongs_to :user
   belongs_to :race, counter_cache: true
+
+  has_one_attached :image
 
   validates :date, presence: true
   validates :time, presence: true, numericality: { greater_than: 0 }
   validates :distance, numericality: { greater_than: 0 }
+  validate :acceptable_image
 
   before_validation :resolve_canonical_race, on: :create
   before_validation :set_defaults_from_race, on: :create
@@ -72,5 +78,17 @@ class Run < ApplicationRecord
 
   def set_defaults_from_race
     self.distance ||= race.distance
+  end
+
+  def acceptable_image
+    return unless image.attached?
+
+    unless image.content_type.in?(ACCEPTED_IMAGE_TYPES)
+      errors.add(:image, "must be a PNG, JPEG or WebP image")
+    end
+
+    if image.byte_size > MAX_IMAGE_SIZE
+      errors.add(:image, "must be smaller than 8 MB")
+    end
   end
 end

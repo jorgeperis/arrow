@@ -123,6 +123,27 @@
   margin-bottom: var(--size-4);
 }
 
+.run-photo {
+  margin-bottom: var(--size-6);
+}
+
+.run-photo-img {
+  width: 100%;
+  height: auto;
+  max-height: 28rem;
+  object-fit: cover;
+  border-radius: var(--rounded-2xl);
+  display: block;
+}
+
+.run-image-preview {
+  width: 100%;
+  max-width: 12rem;
+  height: auto;
+  border-radius: var(--rounded-lg);
+  object-fit: cover;
+}
+
 .run-race-name {
   font-size: var(--text-2xl);
   font-weight: 800;
@@ -320,7 +341,7 @@
 /* Personal Bests Grid */
 .pb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--size-3);
 }
 
@@ -328,13 +349,15 @@
   background: var(--color-bg);
   border: 2px solid var(--pb-color);
   border-radius: var(--rounded-xl);
-  padding: var(--size-4);
-  text-align: center;
+  padding: var(--size-4) var(--size-5);
+  text-align: left;
   text-decoration: none;
   transition: all 0.2s ease;
   display: flex;
-  flex-direction: column;
-  gap: var(--size-1);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--size-4);
+  min-height: 4.5rem;
 }
 
 .pb-card:hover {
@@ -343,12 +366,29 @@
   background: var(--pb-color-light);
 }
 
+.pb-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  min-width: 0;
+  max-width: 16rem;
+}
+
 .pb-card-distance {
   font-size: 11px;
   font-weight: 700;
   color: var(--pb-color);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.pb-card-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pb-card-time {
@@ -362,7 +402,7 @@
 .pb-card-pace {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--size-1);
   font-size: var(--text-sm);
   color: var(--color-text-subtle);
@@ -379,6 +419,52 @@
   color: var(--color-text-subtle);
   opacity: 0.7;
   font-weight: 400;
+  margin-inline-start: auto;
+}
+
+.pb-card--has-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 11.5rem;
+  align-items: flex-end;
+}
+
+.pb-card-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.pb-card--has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0) 35%, rgb(0 0 0 / 0.5) 100%);
+}
+
+.pb-card--has-photo:hover {
+  background: var(--color-bg);
+}
+
+.pb-card--has-photo .pb-card-distance {
+  color: white;
+}
+
+.pb-card--has-photo .pb-card-name,
+.pb-card--has-photo .pb-card-time,
+.pb-card--has-photo .pb-card-pace,
+.pb-card--has-photo .pb-card-date {
+  color: white;
+  opacity: 1;
+}
+
+.pb-card--has-photo .pb-card-pace {
+  opacity: 0.9;
 }
 
 /* Stats Grid 2 columns */
@@ -961,7 +1047,7 @@
   }
 
   .pb-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .stats-numbers {

@@ -113,5 +113,33 @@ RSpec.describe "Runs", type: :request do
       }
       expect(Run.last.time).to eq(2730)
     end
+
+    it "attaches an uploaded image" do
+      post runs_path, params: {
+        run: {
+          race_id: race.id, date: Date.current,
+          distance: 10.0,
+          time_formatted: "1:00:00",
+          image: fixture_file_upload("run_photo.png", "image/png")
+        }
+      }
+      expect(Run.last.image).to be_attached
+    end
+  end
+
+  describe "PATCH /runs/:id" do
+    include ActiveJob::TestHelper
+    let(:user) { create(:user) }
+    before { sign_in(user) }
+
+    it "removes the image when remove_image is set" do
+      run = create(:run, race: create(:race), user: user)
+      run.image.attach(io: File.open(Rails.root.join("spec/fixtures/files/run_photo.png")), filename: "run_photo.png", content_type: "image/png")
+
+      patch run_path(run), params: { run: { remove_image: "1" } }
+
+      perform_enqueued_jobs
+      expect(run.reload.image).not_to be_attached
+    end
   end
 end
