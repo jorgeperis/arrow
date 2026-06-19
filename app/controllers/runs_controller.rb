@@ -49,6 +49,8 @@ class RunsController < ApplicationController
 
   # PATCH/PUT /runs/1 or /runs/1.json
   def update
+    @run.image.purge_later if params.dig(:run, :remove_image) == "1"
+
     respond_to do |format|
       if @run.update(run_params)
         format.html { redirect_to @run, notice: "Run was successfully updated." }
@@ -76,6 +78,6 @@ class RunsController < ApplicationController
     end
 
     def run_params
-      params.expect(run: [ :race_id, :date, :distance, :time_formatted ])
+      params.expect(run: [ :race_id, :date, :distance, :time_formatted, :image ])
     end
 end

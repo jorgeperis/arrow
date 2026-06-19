@@ -37,7 +37,10 @@
   <div class="pb-grid">
     <% @best_marks.each do |run| %>
       <% distance_data = COMMON_RACE_DISTANCES[run.distance.to_s] %>
-      <%= link_to run, class: "pb-card", style: "--pb-color: #{distance_data[:colors][:dark]}; --pb-color-light: #{distance_data[:colors][:light]}" do %>
+      <%= link_to run, class: "pb-card #{"pb-card--has-photo" if run.image.attached?}", style: "--pb-color: #{distance_data[:colors][:dark]}; --pb-color-light: #{distance_data[:colors][:light]}" do %>
+        <% if run.image.attached? %>
+          <%= image_tag run.image.variant(resize_to_fill: [ 400, 300 ]), class: "pb-card-photo", loading: "lazy", alt: "" %>
+        <% end %>
         <div class="pb-card-distance"><%= distance_data[:name] %></div>
         <div class="pb-card-time"><%= decorated_time_for(run.time) %></div>
         <div class="pb-card-pace">

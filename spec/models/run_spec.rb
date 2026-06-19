@@ -38,6 +38,45 @@ RSpec.describe Run, type: :model do
     end
   end
 
+  describe "image attachment" do
+    def attach_image(run, path: "spec/fixtures/files/run_photo.png", content_type: "image/png")
+      run.image.attach(io: File.open(Rails.root.join(path)), filename: File.basename(path), content_type: content_type)
+    end
+
+    it "is valid with an accepted image type" do
+      run = build(:run)
+      attach_image(run)
+      expect(run).to be_valid
+    end
+
+    it "is invalid with an unsupported content type" do
+      run = build(:run)
+      attach_image(run, path: "spec/fixtures/files/not_an_image.txt", content_type: "text/plain")
+      expect(run).not_to be_valid
+      expect(run.errors[:image]).to be_present
+    end
+
+    it "is invalid when the image exceeds the size limit" do
+      run = build(:run)
+      attach_image(run)
+      allow(run.image).to receive(:byte_size).and_return(Run::MAX_IMAGE_SIZE + 1)
+      expect(run).not_to be_valid
+    end
+
+    it "keeps only one image, replacing the previous one" do
+      run = create(:run)
+      attach_image(run)
+      run.save!
+      first_blob_id = run.image.blob.id
+
+      attach_image(run)
+      run.save!
+
+      expect(run.reload.image.blob.id).not_to eq(first_blob_id)
+      expect(ActiveStorage::Attachment.where(record: run).count).to eq(1)
+    end
+  end
+
   describe "callbacks" do
     describe "#set_defaults_from_race" do
       let(:race) { create(:race, distance: 21.097) }

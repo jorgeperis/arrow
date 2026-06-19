@@ -45,6 +45,18 @@
     <%= form.text_field :time_formatted, class: "input", inputmode: "numeric", placeholder: "h:mm:ss", autocomplete: "off", data: { controller: "duration-input" } %>
   </div>
 
+  <div class="flex flex-col gap-half mbe-4">
+    <%= form.label :image, "Photo", class: "text-sm font-medium leading-none" %>
+    <% if run.image.attached? %>
+      <%= image_tag run.image.variant(resize_to_limit: [ 400, 400 ]), class: "run-image-preview", alt: "" %>
+      <label class="inline-flex items-center gap-half text-sm">
+        <%= check_box_tag "run[remove_image]", "1", false %>
+        Remove current photo
+      </label>
+    <% end %>
+    <%= form.file_field :image, accept: "image/png,image/jpeg,image/webp", class: "input" %>
+  </div>
+
   <div class="inline-flex items-center mbs-2 mie-1">
     <%= form.submit class: "btn btn--primary" %>
   </div>

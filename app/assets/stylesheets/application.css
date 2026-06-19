@@ -123,6 +123,27 @@
   margin-bottom: var(--size-4);
 }
 
+.run-photo {
+  margin-bottom: var(--size-6);
+}
+
+.run-photo-img {
+  width: 100%;
+  height: auto;
+  max-height: 28rem;
+  object-fit: cover;
+  border-radius: var(--rounded-2xl);
+  display: block;
+}
+
+.run-image-preview {
+  width: 100%;
+  max-width: 12rem;
+  height: auto;
+  border-radius: var(--rounded-lg);
+  object-fit: cover;
+}
+
 .run-race-name {
   font-size: var(--text-2xl);
   font-weight: 800;
@@ -379,6 +400,48 @@
   color: var(--color-text-subtle);
   opacity: 0.7;
   font-weight: 400;
+}
+
+.pb-card--has-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pb-card-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.pb-card--has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 0.75) 100%);
+}
+
+.pb-card--has-photo:hover {
+  background: var(--color-bg);
+}
+
+.pb-card--has-photo .pb-card-distance {
+  color: white;
+}
+
+.pb-card--has-photo .pb-card-time,
+.pb-card--has-photo .pb-card-pace,
+.pb-card--has-photo .pb-card-date {
+  color: white;
+  opacity: 1;
+}
+
+.pb-card--has-photo .pb-card-pace {
+  opacity: 0.9;
 }
 
 /* Stats Grid 2 columns */
