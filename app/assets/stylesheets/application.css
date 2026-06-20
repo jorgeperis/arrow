@@ -338,6 +338,63 @@
   font-weight: 400;
 }
 
+.stats-info {
+  margin-bottom: var(--size-4);
+}
+
+.stats-info-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-1);
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  transition: color 0.15s ease;
+}
+
+.stats-info-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.stats-info-toggle:hover {
+  color: var(--color-accent);
+}
+
+.stats-info-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.stats-info-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.stats-info[open] .stats-info-chevron {
+  transform: rotate(180deg);
+}
+
+.stats-info-panel {
+  margin-top: var(--size-3);
+  padding: var(--size-3) var(--size-4);
+  background: var(--color-bg-subtle);
+  border-radius: var(--rounded-lg);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-text-subtle);
+}
+
+.stats-info-panel p {
+  margin: 0;
+}
+
 /* Personal Bests Grid */
 .pb-grid {
   display: grid;

@@ -69,6 +69,8 @@
     <span class="stats-section-badge">Age-graded</span>
   </div>
 
+  <%= render "info_disclosure", text: "Age-grading compares your race time against the world-standard time for someone of your sex and age, shown as a percentage. Around 100% is world-class for your age group — the higher the score, the stronger the performance. It lets you compare results fairly across different distances and ages." %>
+
   <% if !current_user.profile_complete? %>
     <p class="stats-section-description">
       <%= link_to "Add your sex and date of birth", edit_profile_path %> to unlock age-graded performance scoring.
@@ -189,6 +191,9 @@
       Estimated Paces
     </h2>
   </div>
+
+  <%= render "info_disclosure", text: "These are predicted times for other distances, projected from your most recent race with Riegel's formula (a standard endurance model). They assume comparable fitness and conditions, so treat them as a rough guide rather than a guarantee." %>
+
   <% if @last_run %>
   <% run = @last_run %>
   <p class="stats-section-description">Based on <%= run.full_name %></p>
