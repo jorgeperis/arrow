@@ -229,3 +229,16 @@ en:
   genders:
     female: "Female"
     male: "Male"
+
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      long: "%B %-d, %Y"
+      long_day: "%b %-d, %Y"
+      month_year: "%b %Y"
+
+  time:
+    formats:
+      default: "%B %-d, %Y at %H:%M"
+      long: "%B %-d, %Y at %H:%M"
+      short: "%b %-d %H:%M"
